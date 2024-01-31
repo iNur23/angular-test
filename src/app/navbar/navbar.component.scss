@@ -1,0 +1,38 @@
+.navbar {
+    height: var(--navbar-height);
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+}
+
+.search {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+}
+
+.searchInput {
+    background: none;
+    outline: none;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    margin-left: 5px;
+}
+
+.searchBtn {
+    background: none;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+
+    :hover {
+        opacity: 0.8;
+    }
+}
+
+
+.searchSvg {
+    color: var(--secondary-color);
+    stroke: var(--secondary-color);
+}

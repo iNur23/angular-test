@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+// reset
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,
+button,
+textarea,
+select {
+    margin: 0;
+    font: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+// variables
+
+:root {
+    // sizes
+    --navbar-height: 50px;
+
+    // colors
+    --primary-color: #1E7EDD;
+    --secondary-color: #F4F7FB;
+    --accent-color: #19B8AB;
+}
+
+// global styles
+
+body {
+    color: var(--primary-color);
+}
