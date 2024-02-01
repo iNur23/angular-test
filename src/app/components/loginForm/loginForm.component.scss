@@ -1,0 +1,23 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+.typeBtns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.typeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &.selected {
+        text-decoration: underline;
+    }
+}

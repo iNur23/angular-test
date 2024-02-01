@@ -1,0 +1,10 @@
+<div class="modal" [class.opened]="modalService.isOpened$.getValue()">
+    <div
+        class="overlay"
+        (click)="modalService.close()"
+    >
+        <div class="content" (click)="modalService.onContentClick($event)">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

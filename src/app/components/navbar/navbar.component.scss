@@ -1,0 +1,20 @@
+.navbar {
+    height: var(--navbar-height);
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.authBtn {
+    margin-left: auto;
+    margin-right: 20px;
+    color: var(--secondary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

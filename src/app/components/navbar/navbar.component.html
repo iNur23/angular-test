@@ -1,0 +1,12 @@
+<header class="navbar">
+  <app-search></app-search>
+  <button
+    class="authBtn"
+    (click)="modalService.open()"
+  >
+    Авторизация
+  </button>
+  <app-modal>
+    <app-loginForm></app-loginForm>
+  </app-modal>
+</header>
