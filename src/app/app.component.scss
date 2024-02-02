@@ -2,3 +2,10 @@
     background: var(--secondary-color);
     min-height: 100vh;
 }
+
+.page {
+    display: flex;
+    padding: 30px;
+    height: calc(100vh - 50px);
+    overflow: auto;
+}

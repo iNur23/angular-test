@@ -1,31 +1,37 @@
-<div>
+<div class="loginForm">
   <div class="typeBtns">
     <button
-      (click)="authService.setType('signIn')"
+      (click)="setType('signIn')"
       class="typeBtn"
-      [class.selected]="authService.type$.getValue() === 'signIn'"
+      [class.selected]="type.getValue() === 'signIn'"
     >Вход</button>
     <button
-      (click)="authService.setType('signUp')"
+      (click)="setType('signUp')"
       class="typeBtn"
-      [class.selected]="authService.type$.getValue() === 'signUp'"
+      [class.selected]="type.getValue() === 'signUp'"
     >Регистрация</button>
   </div>
-  <form class="loginForm">
+  {{error ? error : null}}
+  <div class="inputWrapper">
+    Никнейм
     <input
       type="text"
-      placeholder="Никнейм"
-      (keyup)="authService.onChangeNickname($event.target)"
-      value="{{ authService.nickname$.getValue() }}"
+      (keyup)="onChangeNickname($event.target)"
+      value="{{ nickname.getValue() }}"
     >
+  </div>
+  <div class="inputWrapper">
+    Пароль
     <input
       type="password"
-      placeholder="Пароль"
-      (keyup)="authService.onChangePassword($event.target)"
-      value="{{ authService.password$.getValue() }}"
+      (keyup)="onChangePassword($event.target)"
+      value="{{ password.getValue() }}"
     >
-    <button (click)="authService.buttonOnClick()">
-      {{ authService.type$.value === "signIn" ? "Войти" : "Зарегистрироваться"}}
-    </button>
-  </form>
+    </div>
+  <button
+    (click)="buttonOnClick()"
+    class="submitBtn"
+  >
+    {{ type.value === "signIn" ? "Войти" : "Зарегистрироваться"}}
+  </button>
 </div>

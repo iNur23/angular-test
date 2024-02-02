@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
-  isOpened$ = new BehaviorSubject<boolean>(false)
+  isOpened = new BehaviorSubject<boolean>(false)
 
   constructor() { }
 
@@ -14,10 +14,10 @@ export class ModalService {
   }
 
   open = () => {
-    this.isOpened$.next(true)
+    this.isOpened.next(true)
   }
 
   close = () => {
-    this.isOpened$.next(false)
+    this.isOpened.next(false)
   }
 }

@@ -1,0 +1,13 @@
+<div>
+    <div class="search">
+        {{search ? "Поиск: " + search : null}}
+    </div>
+    <div class="heroesList">
+        <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
+    </div>
+    <div class="pagination">
+        <button (click)="setPage(page>1 ? page - 1 : page)"><</button>
+        {{page}}
+        <button (click)="setPage(page+1)">></button>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="modal" [class.opened]="modalService.isOpened$.getValue()">
+<div class="modal" [class.opened]="modalService.isOpened.getValue()">
     <div
         class="overlay"
         (click)="modalService.close()"

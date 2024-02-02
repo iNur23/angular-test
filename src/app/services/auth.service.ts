@@ -1,31 +1,36 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { USERDATA_LOCALSTORAGE_KEY, USERS_LOCALSTORAGE_KEY } from '../../resources/const/localStorage';
 
-type AuthType = "signIn" | "signUp"
+interface AuthData {
+  nickname: string;
+  password: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  type$ = new BehaviorSubject<AuthType>("signIn")
-  nickname$ = new BehaviorSubject<string>("")
-  password$ = new BehaviorSubject<string>("")
-
+export class AuthService{
   constructor() { }
-
-  setType(type: AuthType) {
-    this.type$.next(type)
-  }
-  onChangeNickname(e: EventTarget | null) {
-    if (!e) return
-    this.nickname$.next((e as HTMLInputElement).value)
-  }
-  onChangePassword(e: EventTarget | null) {
-    if (!e) return
-    this.password$.next((e as HTMLInputElement).value)
+  
+  signIn(data: AuthData) {
+    const users = JSON.parse(localStorage.getItem(USERS_LOCALSTORAGE_KEY) as string) as AuthData[]
+    const user = users.find((user) => user.nickname === data.nickname)
+    if (!user) throw new Error('Пользователь не найден')
+    if (user.password !== data.password) throw new Error('Неверный пароль')
+    localStorage.setItem(USERDATA_LOCALSTORAGE_KEY, JSON.stringify({ nickname: data.nickname }))
+    window.location.reload()
   }
 
-  buttonOnClick() {
-    console.log(this.nickname$.getValue(), this.password$.getValue())
+  signUp(data: AuthData) {
+    const users = JSON.parse(localStorage.getItem(USERS_LOCALSTORAGE_KEY) as string) as AuthData[]
+    const user = users.find((user) => user.nickname === data.nickname)
+    if (user) throw new Error('Пользователь уже существует')
+    users.push(data)
+    localStorage.setItem(USERS_LOCALSTORAGE_KEY, JSON.stringify(users))
+  }
+
+  signOut() {
+    localStorage.removeItem(USERDATA_LOCALSTORAGE_KEY)
+    window.location.reload()
   }
 }
