@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeroesListComponent } from './components/heroes-list/heroes-list.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from '../widgets/navbar/navbar.component';
+import { HeroesListComponent } from '../entities/hero/ui/heroes-list/heroes-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

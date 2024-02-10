@@ -1,0 +1,20 @@
+<header class="navbar">
+  <app-search></app-search>
+  <div class="nickname">{{userData?.nickname}}</div>
+  <button
+    *ngIf="!userData"
+    class="authBtn"
+  >
+    Авторизация
+  </button>
+  <button
+    *ngIf="userData"
+    class="authBtn"
+    (click)="authService.signOut()"
+  >
+    Выйти
+  </button>
+  <app-modal>
+    <app-loginForm></app-loginForm>
+  </app-modal>
+</header>

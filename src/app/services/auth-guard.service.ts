@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { USERDATA_LOCALSTORAGE_KEY } from '../../resources/const/localStorage';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { USERDATA_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'

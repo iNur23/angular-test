@@ -1,0 +1,10 @@
+<div class="modal" [class.opened]="isOpened">
+    <div
+        class="overlay"
+        (click)="close()"
+    >
+        <div class="content" (click)="onContentClick($event)">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
