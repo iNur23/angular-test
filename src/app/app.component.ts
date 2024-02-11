@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../widgets/navbar/navbar.component';
-import { HeroesListComponent } from '../entities/hero/ui/heroes-list/heroes-list.component';
+import { HeroesListComponent } from '../widgets/heroes-list/ui/heroes-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({

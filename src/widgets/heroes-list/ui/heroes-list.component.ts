@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroesService } from '../../model/services/heroes.service';
-import { HeroCardComponent } from '../hero-card/hero-card.component';
+import { HeroesService } from '../model/services/heroes.service';
+import { HeroCardComponent } from '../../../entities/hero/ui/hero-card/hero-card.component';
 import { CommonModule } from '@angular/common';
-import { SearchService } from '../../../../features/searchHero/model/services/search.service';
+import { SearchService } from '../../../features/searchHero/model/services/search.service';
+import { Hero } from 'entities/hero';
 
 @Component({
   selector: 'app-heroes-list',
@@ -15,7 +16,7 @@ import { SearchService } from '../../../../features/searchHero/model/services/se
   styleUrl: './heroes-list.component.scss'
 })
 export class HeroesListComponent implements OnInit {
-  heroes: {name: string, id: number}[]
+  heroes: Hero[]
   page = 1
   limit = 10
   search: string = ""
@@ -30,18 +31,24 @@ export class HeroesListComponent implements OnInit {
   }
 
   setPage(page: number) {
-    this.page = page
-    this.heroes = this.heroesService.getWithSearch(this.search, this.page, this.limit)
+    this.page = page;
+    this.heroesService.getWithSearch(this.search, this.page, this.limit).subscribe(heroes => {
+      this.heroes = heroes
+    })
   }
 
   setLimit(limit: number) {
     this.limit = limit
-    this.heroes = this.heroesService.getWithSearch(this.search, this.page, this.limit)
+    this.heroesService.getWithSearch(this.search, this.page, this.limit).subscribe(heroes => {
+      this.heroes = heroes
+    })
   }
 
   setSearch(search: string) {
     this.page = 1
     this.search = search
-    this.heroes = this.heroesService.getWithSearch(search, this.page, this.limit)
+    this.heroesService.getWithSearch(this.search, this.page, this.limit).subscribe(heroes => {
+      this.heroes = heroes
+    })
   }
 }

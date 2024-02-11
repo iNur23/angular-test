@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeroesListComponent } from 'entities/hero';
+import { HeroesListComponent } from 'widgets/heroes-list';
 
 @Component({
   selector: 'app-heroes-page',

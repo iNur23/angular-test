@@ -11,6 +11,6 @@ export const routes: Routes = [
     {
         path: 'heroes/:id',
         component: HeroPageComponent,
-        canActivate: [AuthGuardService],
+        // canActivate: [AuthGuardService],
     }
 ];

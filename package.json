@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"npm run start:dev:server\"",
-    "start:dev:server": "json-server ./json-server/db.json -p 8000",
+    "start:dev:server": "node ./json-server/index.js --nc",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "@ngrx/effects": "^17.1.0",
     "@ngrx/store": "^17.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -31,7 +32,7 @@
     "@types/jasmine": "~5.1.0",
     "concurrently": "^8.2.2",
     "jasmine-core": "~5.1.0",
-    "json-server": "^1.0.0-alpha.23",
+    "json-server": "^0.17.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
