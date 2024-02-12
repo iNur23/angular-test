@@ -1,4 +1,6 @@
-<div>
+{{ (isLoading | async) ? "loading" : null}}
+{{ (error | async) ? (error | async) : null }}
+<div *ngIf="!(isLoading | async)">
     <div class="search">
         {{(search | async) ? "Поиск: " + (search | async) : null}}
     </div>

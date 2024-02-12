@@ -1,10 +1,17 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeroCardComponent } from '../../../entities/hero/ui/hero-card/hero-card.component';
 import { CommonModule } from '@angular/common';
 import { Hero } from 'entities/hero';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
-import { selectHeroesList, selectHeroesListData, selectHeroesListLimit, selectHeroesListPage, selectHeroesListSearch } from '../model/selectors/heroes-list.selectors';
+import {
+  selectHeroesListData,
+  selectHeroesListError,
+  selectHeroesListIsLoading,
+  selectHeroesListLimit,
+  selectHeroesListPage,
+  selectHeroesListSearch
+} from '../model/selectors/heroes-list.selectors';
 import { heroesListActions } from '../model/slice/heroes-list.actions';
 import { Observable } from 'rxjs';
 
@@ -30,6 +37,8 @@ export class HeroesListComponent implements OnInit {
   page: Observable<number> = this.store.select(selectHeroesListPage)
   limit: Observable<number> = this.store.select(selectHeroesListLimit)
   heroes: Observable<Hero[]> = this.store.select(selectHeroesListData)
+  isLoading: Observable<boolean> = this.store.select(selectHeroesListIsLoading)
+  error: Observable<string | undefined> = this.store.select(selectHeroesListError)
 
   setPage = (page: number) => {
     this.store.dispatch(heroesListActions.setPage({ page }))

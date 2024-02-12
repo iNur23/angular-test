@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import { heroesListActions } from 'widgets/heroes-list';
@@ -7,7 +8,10 @@ import { selectHeroesListSearch } from 'widgets/heroes-list/model/selectors/hero
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
@@ -25,7 +29,7 @@ export class SearchComponent {
     this.store.dispatch(heroesListActions.setSearch({ search: newSearch }))
   }
 
-  onClickButton() {
+  onSubmit() {
     this.store.dispatch(heroesListActions.loadHeroesList())
   }
 }

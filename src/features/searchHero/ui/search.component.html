@@ -1,7 +1,12 @@
 <form class="search">
     Поиск героя
-    <input class="input" type="text" (input)="onChangeSearch($event.target)">
-    <button class="btn" type="button" (click)="onClickButton()">
+    <input
+        class="input"
+        type="text"
+        (input)="onChangeSearch($event.target)"
+        (keydown.enter)="onSubmit()"
+    >
+    <button class="btn" type="button" (click)="onSubmit()">
         <img class="searchSvg" src="shared/assets/icons/search-20-20.svg">
     </button>
 </form>
