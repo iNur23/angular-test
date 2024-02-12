@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { HeroesService } from '../model/services/heroes.service';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { HeroCardComponent } from '../../../entities/hero/ui/hero-card/hero-card.component';
 import { CommonModule } from '@angular/common';
-import { SearchService } from '../../../features/searchHero/model/services/search.service';
 import { Hero } from 'entities/hero';
+import { Store, select } from '@ngrx/store';
+import { StateSchema } from 'app/store/store';
+import { selectHeroesList, selectHeroesListData, selectHeroesListLimit, selectHeroesListPage, selectHeroesListSearch } from '../model/selectors/heroes-list.selectors';
+import { heroesListActions } from '../model/slice/heroes-list.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-heroes-list',
@@ -16,39 +19,28 @@ import { Hero } from 'entities/hero';
   styleUrl: './heroes-list.component.scss'
 })
 export class HeroesListComponent implements OnInit {
-  heroes: Hero[]
-  page = 1
-  limit = 10
-  search: string = ""
 
-  constructor(private searchService: SearchService, private heroesService: HeroesService) {
-  }
+  constructor(private store: Store<StateSchema>) {}
 
   ngOnInit(): void {
-    this.searchService.getSearch.subscribe(search => {
-      this.setSearch(search)
-    })
+    this.store.dispatch(heroesListActions.loadHeroesList())
   }
 
-  setPage(page: number) {
-    this.page = page;
-    this.heroesService.getWithSearch(this.search, this.page, this.limit).subscribe(heroes => {
-      this.heroes = heroes
-    })
-  }
+  search: Observable<string> = this.store.select(selectHeroesListSearch)
+  page: Observable<number> = this.store.select(selectHeroesListPage)
+  limit: Observable<number> = this.store.select(selectHeroesListLimit)
+  heroes: Observable<Hero[]> = this.store.select(selectHeroesListData)
 
-  setLimit(limit: number) {
-    this.limit = limit
-    this.heroesService.getWithSearch(this.search, this.page, this.limit).subscribe(heroes => {
-      this.heroes = heroes
-    })
+  setPage = (page: number) => {
+    this.store.dispatch(heroesListActions.setPage({ page }))
+    this.store.dispatch(heroesListActions.loadHeroesList())
   }
-
-  setSearch(search: string) {
-    this.page = 1
-    this.search = search
-    this.heroesService.getWithSearch(this.search, this.page, this.limit).subscribe(heroes => {
-      this.heroes = heroes
-    })
+  setPreviousPage = () => {
+    this.store.dispatch(heroesListActions.setPreviousPage())
+    this.store.dispatch(heroesListActions.loadHeroesList())
+  }
+  setNextPage = () => {
+    this.store.dispatch(heroesListActions.setNextPage())
+    this.store.dispatch(heroesListActions.loadHeroesList())
   }
 }

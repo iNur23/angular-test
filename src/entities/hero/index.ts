@@ -1,4 +1,4 @@
-export { HeroEffects } from "./model/slice/hero.effects";
+export { heroEffects } from "./model/slice/hero.effects";
 
 export { heroReducer } from "./model/slice/hero.reducer";
 

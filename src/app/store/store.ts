@@ -1,10 +1,18 @@
 import { ActionReducerMap } from "@ngrx/store";
-import { HeroSchema, heroReducer } from "entities/hero";
+import { heroEffects, HeroSchema, heroReducer } from "entities/hero";
+import { HeroesListSchema, heroesListEffects, heroesListReducer } from "widgets/heroes-list";
 
 export interface StateSchema {
-    hero: HeroSchema
+    hero: HeroSchema;
+    heroesList: HeroesListSchema
 }
 
-export const reducers: ActionReducerMap<StateSchema> = {
-    hero: heroReducer
+export const appReducers: ActionReducerMap<StateSchema> = {
+    hero: heroReducer,
+    heroesList: heroesListReducer
 }
+
+export const appEffects = [
+    heroEffects,
+    heroesListEffects
+]

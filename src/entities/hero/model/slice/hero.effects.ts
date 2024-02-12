@@ -16,4 +16,4 @@ const loadHero = createEffect((actions$ = inject(Actions), heroService = inject(
     )
 }, { functional: true })
 
-export const HeroEffects = { loadHero }
+export const heroEffects = { loadHero }

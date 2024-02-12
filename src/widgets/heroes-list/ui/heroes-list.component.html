@@ -1,13 +1,23 @@
 <div>
     <div class="search">
-        {{search ? "Поиск: " + search : null}}
+        {{(search | async) ? "Поиск: " + (search | async) : null}}
     </div>
     <div class="heroesList">
-        <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
+        <app-hero-card *ngFor="let hero of (heroes | async)" [hero]="hero"></app-hero-card>
     </div>
     <div class="pagination">
-        <button (click)="setPage(page>1 ? page - 1 : page)"><</button>
-        {{page}}
-        <button (click)="setPage(page+1)">></button>
+        <button
+            (click)="setPage(1)"
+            *ngIf="$any(page | async) > 2"
+        ><<</button>
+        <button
+            (click)="setPreviousPage()"
+            *ngIf="$any(page | async) > 1"
+        ><</button>
+        {{ page | async }}
+        <button
+            (click)="setNextPage()"
+            *ngIf="$any(heroes | async).length >= $any(limit | async)"
+        >></button>
     </div>
 </div>

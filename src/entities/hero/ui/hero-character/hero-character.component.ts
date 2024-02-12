@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Hero } from '../../model/types/hero';
-import { HeroService } from '../../model/services/hero.service';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';

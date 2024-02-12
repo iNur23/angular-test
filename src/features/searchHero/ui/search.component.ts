@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { SearchService } from '../model/services/search.service';
+import { Store, select } from '@ngrx/store';
+import { StateSchema } from 'app/store/store';
+import { heroesListActions } from 'widgets/heroes-list';
+import { selectHeroesListSearch } from 'widgets/heroes-list/model/selectors/heroes-list.selectors';
 
 @Component({
   selector: 'app-search',
@@ -10,16 +12,20 @@ import { SearchService } from '../model/services/search.service';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-  search = new BehaviorSubject<string>("")
+  search: string
 
-  constructor(private searchService: SearchService) {}
+  constructor(private store: Store<StateSchema>) {
+    this.store
+      .pipe(select(selectHeroesListSearch))
+      .subscribe(stateSearch => this.search = stateSearch)
+  }
 
   onChangeSearch(e: EventTarget | null) {
-    if (!e) return
-    this.search.next((e as HTMLInputElement).value)
+    const newSearch = (e as HTMLInputElement).value
+    this.store.dispatch(heroesListActions.setSearch({ search: newSearch }))
   }
 
   onClickButton() {
-    this.searchService.setSearch(this.search.getValue())
+    this.store.dispatch(heroesListActions.loadHeroesList())
   }
 }
