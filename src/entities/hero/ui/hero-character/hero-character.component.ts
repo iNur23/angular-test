@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import { heroActions } from 'entities/hero/model/slice/hero.actions';
+import { Observable } from 'rxjs';
+import { selectHeroData, selectHeroError, selectHeroIsLoading } from 'entities/hero/model/selectors/hero.selectors';
 
 @Component({
   selector: 'app-hero-character',
@@ -16,17 +18,11 @@ import { heroActions } from 'entities/hero/model/slice/hero.actions';
 })
 export class HeroCharacterComponent implements OnInit {
   @Input() id: string
-  hero: Hero
-  error: string
-  isLoading: boolean
+  constructor(private store: Store<StateSchema>) {}
 
-  constructor(private store: Store<StateSchema>) {
-    this.store.select((state) => state.hero).subscribe(state => {
-      if (state.data) this.hero = state.data
-      if (state.error) this.error = state.error
-      this.isLoading = state.isLoading
-    })
-  }
+  hero: Observable<Hero | undefined> = this.store.select(selectHeroData)
+  error: Observable<string | undefined> = this.store.select(selectHeroError)
+  isLoading: Observable<boolean> = this.store.select(selectHeroIsLoading)
 
   ngOnInit() {
     this.store.dispatch(heroActions.loadHero({id: this.id}))

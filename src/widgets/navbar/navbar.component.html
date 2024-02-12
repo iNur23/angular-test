@@ -1,20 +1,19 @@
 <header class="navbar">
   <app-search></app-search>
-  <div class="nickname">{{userData?.nickname}}</div>
+  <div class="nickname">{{(userData | async)?.username}}</div>
+  <a href="login">
+    <button
+      *ngIf="!(userData | async)"
+      class="authBtn"
+    >
+      Авторизация
+    </button>
+  </a>
   <button
-    *ngIf="!userData"
+    *ngIf="(userData | async)"
     class="authBtn"
-  >
-    Авторизация
-  </button>
-  <button
-    *ngIf="userData"
-    class="authBtn"
-    (click)="authService.signOut()"
+    (click)="onSignOut()"
   >
     Выйти
   </button>
-  <app-modal>
-    <app-loginForm></app-loginForm>
-  </app-modal>
 </header>

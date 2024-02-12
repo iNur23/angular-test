@@ -1,16 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalComponent } from '../../shared/ui/modal/modal.component';
-import { LoginFormComponent } from '../../features/auth/ui/loginForm/loginForm.component';
-import { SearchComponent } from '../../features/searchHero/ui/search.component';
-import { AuthService } from '../../features/auth/model/services/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { USERDATA_LOCALSTORAGE_KEY } from '../../shared/const/localStorage';
+import { Store } from '@ngrx/store';
+import { StateSchema } from 'app/store/store';
+import { LoginFormComponent, authActions, selectAuthData, selectIsAuthorized } from 'features/auth';
+import { Observable } from 'rxjs';
+import { SearchComponent } from 'features/searchHero';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    ModalComponent,
     LoginFormComponent,
     SearchComponent,
     CommonModule
@@ -19,18 +18,16 @@ import { USERDATA_LOCALSTORAGE_KEY } from '../../shared/const/localStorage';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-  userData?: { nickname: string }
+  constructor(private store: Store<StateSchema>) {}
 
-  constructor(public authService: AuthService) {
-
-  }
+  userData: Observable<{ username: string; } | undefined> = this.store.select(selectAuthData)
+  isAuthorized = this.store.select(selectIsAuthorized)
 
   ngOnInit(): void {
-    const dataString = localStorage.getItem(USERDATA_LOCALSTORAGE_KEY)
-    if (dataString) {
-      const userData = JSON.parse(dataString)
-      this.userData = userData
-    }
+    this.store.dispatch(authActions.init())
   }
 
+  onSignOut() {
+    this.store.dispatch(authActions.logOut())
+  }
 }

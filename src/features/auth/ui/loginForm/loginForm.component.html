@@ -1,37 +1,40 @@
-<div class="loginForm">
+<form class="loginForm">
   <div class="typeBtns">
     <button
-      (click)="setType('signIn')"
+      (click)="setAuthType('signIn')"
       class="typeBtn"
-      [class.selected]="type.getValue() === 'signIn'"
+      [class.selected]="(authType | async) === 'signIn'"
     >Вход</button>
     <button
-      (click)="setType('signUp')"
+      (click)="setAuthType('signUp')"
       class="typeBtn"
-      [class.selected]="type.getValue() === 'signUp'"
+      [class.selected]="(authType | async) === 'signUp'"
     >Регистрация</button>
   </div>
-  {{error ? error : null}}
+  {{(authError | async) ? (authError | async) : null}}
+  {{(validationError | async) ? (validationError | async) : null}}
   <div class="inputWrapper">
     Никнейм
     <input
       type="text"
-      (keyup)="onChangeNickname($event.target)"
-      value="{{ nickname.getValue() }}"
+      (keydown.enter)="onSubmit()"
+      (keyup)="onChangeUsername($event.target)"
+      value="{{ (username | async) }}"
     >
   </div>
   <div class="inputWrapper">
     Пароль
     <input
       type="password"
+      (keydown.enter)="onSubmit()"
       (keyup)="onChangePassword($event.target)"
-      value="{{ password.getValue() }}"
+      value="{{ (password | async) }}"
     >
     </div>
   <button
-    (click)="buttonOnClick()"
+    (click)="onSubmit()"
     class="submitBtn"
   >
-    {{ type.value === "signIn" ? "Войти" : "Зарегистрироваться"}}
+    {{ (authType | async) === "signIn" ? "Войти" : "Зарегистрироваться"}}
   </button>
-</div>
+</form>

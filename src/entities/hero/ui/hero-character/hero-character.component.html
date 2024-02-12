@@ -2,18 +2,18 @@
     <a href="heroes" class="link">
         <div class="returnBtn">Вернуться к списку</div>
     </a>
-    {{ isLoading ? "loading" : null}}
-    {{ error ? error : null }}
+    {{ (isLoading | async) ? "loading" : null}}
+    {{ error | async }}
     <div
-        *ngIf="!isLoading && !error"
+        *ngIf="!(isLoading | async) && !(error | async)"
         class="heroCharacter"
     >
-        <h2>{{ hero.name | uppercase }}</h2>
+        <h2>{{ (hero | async)?.name | uppercase }}</h2>
         <div class="statsWrapper">
-            <img src="{{hero.image.url}}" class="image">
+            <img src="{{(hero | async)?.image?.url}}" class="image">
             <table class="powerstats">
                 <th>Power stats</th>
-                <tr *ngFor="let item of hero.powerstats | keyvalue">
+                <tr *ngFor="let item of (hero | async)?.powerstats | keyvalue">
                     <td>{{item.key}}</td>
                     <td>{{item.value}}</td>
                 </tr>

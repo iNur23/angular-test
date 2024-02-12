@@ -1,63 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../model/services/auth.service';
-import { BehaviorSubject } from 'rxjs';
 import { USERS_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
-
-type AuthType = "signIn" | "signUp"
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { StateSchema } from 'app/store/store';
+import { AuthType } from '../../model/types/loginForm';
+import { Observable } from 'rxjs';
+import {
+  selectLoginFormAuthType,
+  selectLoginFormError,
+  selectLoginFormPassword,
+  selectLoginFormUsername
+} from '../../model/selectors/login-form.selectors';
+import { loginFormActions } from '../../model/slice/login-form.slice/login-form.actions';
+import { authActions } from '../../model/slice/auth.slice/auth.actions';
+import { CommonModule } from '@angular/common';
+import { selectAuthError } from 'features/auth/model/selectors/auth.selectors';
 
 @Component({
   selector: 'app-loginForm',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
+  ],
   templateUrl: './loginForm.component.html',
   styleUrl: './loginForm.component.scss'
 })
-export class LoginFormComponent implements OnInit {
-  type = new BehaviorSubject<AuthType>("signIn")
-  nickname = new BehaviorSubject<string>("")
-  password = new BehaviorSubject<string>("")
-  error?: string
+export class LoginFormComponent {
+  constructor(private store: Store<StateSchema>) {}
 
-  constructor(private authService: AuthService) {
+  authType: Observable<AuthType> = this.store.select(selectLoginFormAuthType)
+  username: Observable<string> = this.store.select(selectLoginFormUsername)
+  password: Observable<string> = this.store.select(selectLoginFormPassword)
+  validationError: Observable<string | undefined> = this.store.select(selectLoginFormError)
+  authError: Observable<string | undefined> = this.store.select(selectAuthError)
 
+  setAuthType(type: AuthType) {
+    this.store.dispatch(loginFormActions.setType({ authType: type }))
   }
-
-  ngOnInit(): void {
-    if (!localStorage.getItem(USERS_LOCALSTORAGE_KEY)) localStorage.setItem(USERS_LOCALSTORAGE_KEY, '[]')
-  }
-  setType(type: AuthType) {
-    this.type.next(type)
-  }
-  onChangeNickname(e: EventTarget | null) {
-    if (!e) return
-    this.nickname.next((e as HTMLInputElement).value)
+  onChangeUsername(e: EventTarget | null) {
+    this.store.dispatch(loginFormActions.setUsername({ username: (e as HTMLInputElement).value }))
   }
   onChangePassword(e: EventTarget | null) {
-    if (!e) return
-    this.password.next((e as HTMLInputElement).value)
+    this.store.dispatch(loginFormActions.setPassword({ password: (e as HTMLInputElement).value }))
   }
   clear() {
-    this.password.next("")
-    this.nickname.next("")
-    this.error = undefined
-    this.type.next("signIn")
+    this.store.dispatch(loginFormActions.clearForm())
   }
-  buttonOnClick() {
-    try {
-      const authData = {
-        nickname: this.nickname.value,
-        password: this.password.value
-      }
-      if (this.type.value === "signIn") {
-        this.authService.signIn(authData)
-      }
-      else {
-        this.authService.signUp(authData)
-      }
-      this.clear()
-    }
-    catch(e) {
-      this.error = e as string
-    }
+
+  onSubmit() {
+    this.store.dispatch(authActions.logIn())
   }
 }
