@@ -7,20 +7,10 @@
     border-bottom: 2px solid var(--primary-color);
 }
 
-.nickname {
+.authWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-left: auto;
-    color: var(--primary-color);
-}
-
-.authBtn {
-    margin-left: 15px;
-    margin-right: 20px;
-    color: var(--accent-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-        opacity: 0.8;
-    }
+    margin-right: 15px;
 }

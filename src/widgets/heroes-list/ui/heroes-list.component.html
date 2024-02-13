@@ -1,25 +1,43 @@
 {{ (isLoading | async) ? "loading" : null}}
 {{ (error | async) ? (error | async) : null }}
 <div *ngIf="!(isLoading | async)">
-    <div class="search">
-        {{(search | async) ? "Поиск: " + (search | async) : null}}
+
+    <div class="header">
+        <div class="search" *ngIf="!!(search | async)">
+            <app-text variant="title">Search result: {{(search | async)}}</app-text>
+        </div>
+
+        <div class="pagination">
+            <app-button
+                variant="outline"
+                shape="cyrcle"
+                (click)="setPage(1)"
+                *ngIf="$any(page | async) > 2"
+            >1</app-button>
+            <div *ngIf="$any(page | async) > 3">
+                ...
+            </div>
+            <app-button
+                variant="outline"
+                shape="cyrcle"
+                (click)="setPreviousPage()"
+                *ngIf="$any(page | async) > 1"
+            >{{ $any(page | async) - 1 }}</app-button>
+            <app-button
+                variant="inverted"
+                shape="cyrcle"
+            >{{ page | async }}</app-button>
+            <app-button
+                variant="outline"
+                shape="cyrcle"
+                (click)="setNextPage()"
+                *ngIf="$any(heroes | async).length >= $any(limit | async)"
+            >{{ $any(page | async) + 1 }}</app-button>
+        </div>
     </div>
+
     <div class="heroesList">
         <app-hero-card *ngFor="let hero of (heroes | async)" [hero]="hero"></app-hero-card>
     </div>
-    <div class="pagination">
-        <button
-            (click)="setPage(1)"
-            *ngIf="$any(page | async) > 2"
-        ><<</button>
-        <button
-            (click)="setPreviousPage()"
-            *ngIf="$any(page | async) > 1"
-        ><</button>
-        {{ page | async }}
-        <button
-            (click)="setNextPage()"
-            *ngIf="$any(heroes | async).length >= $any(limit | async)"
-        >></button>
-    </div>
+
 </div>

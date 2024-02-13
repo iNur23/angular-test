@@ -13,13 +13,17 @@ import {
 } from '../model/selectors/heroes-list.selectors';
 import { heroesListActions } from '../model/slice/heroes-list.actions';
 import { Observable } from 'rxjs';
+import { TextComponent } from 'shared/ui/text/text.component';
+import { ButtonComponent } from 'shared/ui/button/button.component';
 
 @Component({
   selector: 'app-heroes-list',
   standalone: true,
   imports: [
     HeroCardComponent,
-    CommonModule
+    CommonModule,
+    TextComponent,
+    ButtonComponent
   ],
   templateUrl: './heroes-list.component.html',
   styleUrl: './heroes-list.component.scss'

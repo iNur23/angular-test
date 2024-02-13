@@ -1,19 +1,21 @@
 <header class="navbar">
   <app-search></app-search>
-  <div class="nickname">{{(userData | async)?.username}}</div>
-  <a routerLink="/login">
-    <button
-      *ngIf="!(userData | async)"
-      class="authBtn"
+  <div class="authWrapper">
+    {{(userData | async)?.username}}
+    <a routerLink="/login">
+      <app-button
+        *ngIf="!(userData | async)"
+        variant="linkLike"
+      >
+        Sign In
+      </app-button>
+    </a>
+    <app-button
+      *ngIf="(userData | async)"
+      variant="linkLike"
+      (click)="onSignOut()"
     >
-      Авторизация
-    </button>
-  </a>
-  <button
-    *ngIf="(userData | async)"
-    class="authBtn"
-    (click)="onSignOut()"
-  >
-    Выйти
-  </button>
+      Sign Out
+    </app-button>
+  </div>
 </header>

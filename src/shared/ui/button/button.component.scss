@@ -1,0 +1,48 @@
+button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+// variants
+
+.normalVariant {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+}
+
+.invertedVariant {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+}
+
+.outlineVariant {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.accentVariant {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+.linkLikeVariant {
+    color: var(--accent-color);
+    background: none;
+    border: none;
+}
+
+// shapes
+
+.cyrcleShape {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}

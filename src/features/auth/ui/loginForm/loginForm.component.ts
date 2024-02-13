@@ -16,6 +16,7 @@ import { authActions } from '../../model/slice/auth.slice/auth.actions';
 import { CommonModule } from '@angular/common';
 import { selectAuthError } from 'features/auth/model/selectors/auth.selectors';
 import { Router } from '@angular/router';
+import { ButtonComponent } from 'shared/ui/button/button.component';
 
 @Component({
   selector: 'app-loginForm',
@@ -23,7 +24,8 @@ import { Router } from '@angular/router';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    ButtonComponent
   ],
   templateUrl: './loginForm.component.html',
   styleUrl: './loginForm.component.scss'

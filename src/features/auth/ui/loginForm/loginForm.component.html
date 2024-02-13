@@ -31,10 +31,11 @@
       value="{{ (password | async) }}"
     >
     </div>
-  <button
+  <app-button
     (click)="onSubmit()"
     class="submitBtn"
+    variant="outline"
   >
     {{ (authType | async) === "signIn" ? "Войти" : "Зарегистрироваться"}}
-  </button>
+  </app-button>
 </form>

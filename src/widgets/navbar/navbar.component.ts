@@ -6,6 +6,7 @@ import { LoginFormComponent, authActions, selectAuthData, selectIsAuthorized } f
 import { Observable } from 'rxjs';
 import { SearchComponent } from 'features/searchHero';
 import { Router, RouterModule } from '@angular/router';
+import { ButtonComponent } from 'shared/ui/button/button.component';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,8 @@ import { Router, RouterModule } from '@angular/router';
     LoginFormComponent,
     SearchComponent,
     CommonModule,
-    RouterModule
+    RouterModule,
+    ButtonComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
