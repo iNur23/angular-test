@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroCardComponent } from '../../../entities/hero/ui/hero-card/hero-card.component';
 import { CommonModule } from '@angular/common';
-import { Hero } from 'entities/hero';
+import { Hero, HeroCardComponent } from 'entities/hero';
 import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import {

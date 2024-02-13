@@ -13,8 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeroesListComponent,
     HttpClientModule
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'angular-test';

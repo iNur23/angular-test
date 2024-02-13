@@ -30,7 +30,7 @@
               "src/shared/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/app/styles/index.scss"
             ],
             "scripts": []
           },
