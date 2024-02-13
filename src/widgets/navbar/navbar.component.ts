@@ -5,6 +5,7 @@ import { StateSchema } from 'app/store/store';
 import { LoginFormComponent, authActions, selectAuthData, selectIsAuthorized } from 'features/auth';
 import { Observable } from 'rxjs';
 import { SearchComponent } from 'features/searchHero';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +13,14 @@ import { SearchComponent } from 'features/searchHero';
   imports: [
     LoginFormComponent,
     SearchComponent,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-  constructor(private store: Store<StateSchema>) {}
+  constructor(private store: Store<StateSchema>, private router: Router) {}
 
   userData: Observable<{ username: string; } | undefined> = this.store.select(selectAuthData)
   isAuthorized = this.store.select(selectIsAuthorized)
@@ -29,5 +31,6 @@ export class NavbarComponent implements OnInit {
 
   onSignOut() {
     this.store.dispatch(authActions.logOut())
+    this.router.navigate(['/login'])
   }
 }

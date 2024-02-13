@@ -4,32 +4,39 @@ import { Store, select } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import { heroesListActions } from 'widgets/heroes-list';
 import { selectHeroesListSearch } from 'widgets/heroes-list/model/selectors/heroes-list.selectors';
+import { searchActions } from '../model/slice/search.actions';
+import { selectSearchQuery } from '../model/selectors/search.selector';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-  search: string
+  query: string
 
-  constructor(private store: Store<StateSchema>) {
-    this.store
-      .pipe(select(selectHeroesListSearch))
-      .subscribe(stateSearch => this.search = stateSearch)
+  constructor(private store: Store<StateSchema>, private router: Router) {
+    this.store.select(selectSearchQuery).subscribe(query => this.query = query)
   }
 
   onChangeSearch(e: EventTarget | null) {
-    const newSearch = (e as HTMLInputElement).value
-    this.store.dispatch(heroesListActions.setSearch({ search: newSearch }))
+    const query = (e as HTMLInputElement).value
+    this.store.dispatch(searchActions.setSearch({ query }))
   }
 
   onSubmit() {
+    this.store.dispatch(heroesListActions.setSearch({ search: this.query }))
+    this.store.dispatch(searchActions.clear())
+    this.router.navigate(['/heroes'])
     this.store.dispatch(heroesListActions.loadHeroesList())
   }
 }

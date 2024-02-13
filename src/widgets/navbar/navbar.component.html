@@ -1,7 +1,7 @@
 <header class="navbar">
   <app-search></app-search>
   <div class="nickname">{{(userData | async)?.username}}</div>
-  <a href="login">
+  <a routerLink="/login">
     <button
       *ngIf="!(userData | async)"
       class="authBtn"

@@ -7,12 +7,18 @@ import { LoginPageComponent } from 'pages/login-page';
 export const routes: Routes = [
     {
         path: 'heroes',
-        component: HeroesPageComponent
+        component: HeroesPageComponent,
+        canActivate: [AuthGuardService],
+    },
+    {
+        path: '',
+        redirectTo: '/heroes',
+        pathMatch: 'full'
     },
     {
         path: 'heroes/:id',
         component: HeroPageComponent,
-        // canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService],
     },
     {
         path: 'login',

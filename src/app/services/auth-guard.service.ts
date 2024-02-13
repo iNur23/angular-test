@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { USERDATA_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { CanActivate, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { StateSchema } from 'app/store/store';
+import { selectIsAuthorized } from 'features/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  constructor (private router: Router) {}
+  isAuthorized: boolean
+  constructor (private router: Router, private store: Store<StateSchema>) {
+    this.store.select(selectIsAuthorized).subscribe(isAuthorized => {
+      this.isAuthorized = isAuthorized
+    })
+  }
+
   canActivate(): boolean {
-    const userData = localStorage.getItem(USERDATA_LOCALSTORAGE_KEY)
-    if (!userData) {
-      this.router.navigate([''])
+    if (!this.isAuthorized) {
+      this.router.navigate(['/login'])
       return false
     }
     return true

@@ -6,12 +6,14 @@ import { StateSchema } from 'app/store/store';
 import { heroActions } from 'entities/hero/model/slice/hero.actions';
 import { Observable } from 'rxjs';
 import { selectHeroData, selectHeroError, selectHeroIsLoading } from 'entities/hero/model/selectors/hero.selectors';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-hero-character',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './hero-character.component.html',
   styleUrl: './hero-character.component.scss'

@@ -5,6 +5,7 @@
         type="text"
         (input)="onChangeSearch($event.target)"
         (keydown.enter)="onSubmit()"
+        value="{{query}}"
     >
     <button class="btn" type="button" (click)="onSubmit()">
         <img class="searchSvg" src="shared/assets/icons/search-20-20.svg">

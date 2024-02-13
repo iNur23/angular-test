@@ -6,8 +6,14 @@ import { StateSchema } from "app/store/store";
 import { AuthService } from "../../services/auth.service";
 import { selectLoginForm } from "../../selectors/login-form.selectors";
 import { authActions } from "./auth.actions";
+import { Router } from "@angular/router";
 
-const authByUsername = createEffect((actions$ = inject(Actions), authService = inject(AuthService), store = inject(Store<StateSchema>)) => {
+const authByUsername = createEffect((
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    store = inject(Store<StateSchema>),
+    router = inject(Router)
+) => {
     return actions$.pipe(
         ofType(authActions.logIn),
         withLatestFrom(store.select(selectLoginForm)),
@@ -16,13 +22,19 @@ const authByUsername = createEffect((actions$ = inject(Actions), authService = i
 
             if (authType === "signIn") {
                 return authService.signIn({ username, password }).pipe(
-                    map(userData => authActions.logInSuccess({username: userData.username})),
+                    map(userData => {
+                        router.navigate(['/heroes'])
+                        return authActions.logInSuccess({username: userData.username})
+                    }),
                     catchError((error) => of(authActions.logInError({ error: error.message })))
                 )
             }
 
             return authService.signUp({ username, password }).pipe(
-                map(userData => authActions.logInSuccess({username: userData.username})),
+                map(userData => {
+                    router.navigate(['/heroes'])
+                    return authActions.logInSuccess({username: userData.username})
+                }),
                 catchError((error) => of(authActions.logInError({ error: error.message })))
             )
         })

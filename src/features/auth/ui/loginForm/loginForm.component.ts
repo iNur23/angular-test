@@ -15,6 +15,7 @@ import { loginFormActions } from '../../model/slice/login-form.slice/login-form.
 import { authActions } from '../../model/slice/auth.slice/auth.actions';
 import { CommonModule } from '@angular/common';
 import { selectAuthError } from 'features/auth/model/selectors/auth.selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginForm',
@@ -45,11 +46,9 @@ export class LoginFormComponent {
   onChangePassword(e: EventTarget | null) {
     this.store.dispatch(loginFormActions.setPassword({ password: (e as HTMLInputElement).value }))
   }
-  clear() {
-    this.store.dispatch(loginFormActions.clearForm())
-  }
 
   onSubmit() {
     this.store.dispatch(authActions.logIn())
+    this.store.dispatch(loginFormActions.clearForm())
   }
 }
