@@ -3,6 +3,7 @@
 
 body {
     color: var(--primary-color);
+    font-family: var(--normal-font);
 }
 
 .app {
@@ -13,6 +14,6 @@ body {
 .page {
     display: flex;
     padding: 30px;
-    height: calc(100vh - 50px);
+    height: calc(100vh - var(--navbar-height));
     overflow: auto;
 }

@@ -1,10 +1,30 @@
+@font-face {
+    font-family: 'Rockwell';
+    src: url('../../shared/assets/fonts/Rockwell.ttf');
+};
+@font-face {
+    font-family: 'Bou Collegiate';
+    src: url('../../shared/assets/fonts/Bou_Collegiate.ttf');
+};
+@font-face {
+    font-family: 'Shadows Into Light';
+    src: url('../../shared/assets/fonts/Shadows_Into_Light.ttf');
+};
+
 :root {
     // sizes
     --navbar-height: 50px;
 
     // colors
-    --primary-color: #1E7EDD;
-    --secondary-color: #F4F7FB;
-    --accent-color: #19B8AB;
-    --overlay-color: rgba(11 40 70 / 60%);
+    --primary-color: #FBF4F4;
+    --secondary-color: #060606;
+    --accent-color: #FFF200;
+    --overlay-color: #fbf4f43f;
+
+    // fonts
+    --title-font: 'Bou Collegiate';
+
+    --normal-font: 'Rockwell';
+
+    --handwrite-font: 'Shadows Into Light'
 }

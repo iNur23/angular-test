@@ -1,3 +1,6 @@
-<a routerLink="/heroes/{{hero.id}}" class="link">
-    <div class="card">{{hero.id}}. {{hero.name}}</div>
+<a routerLink="/heroes/{{hero.id}}" class="card">
+    <div class="content">
+        <img src="{{hero.image.url}}" class="image">
+        <div class="nameWrapper">{{hero.name}}</div>
+    </div>
 </a>

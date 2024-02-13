@@ -24,7 +24,7 @@ export class HeroesService {
     return this.http.get<Hero[]>(`http://localhost:8000/heroes`, {
       params: {
         _page: page,
-        _per_page: limit,
+        _limit: limit,
         q: search
       }
     })

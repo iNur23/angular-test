@@ -4,7 +4,7 @@ import { heroesListActions } from "./heroes-list.actions";
 
 const initialState: HeroesListSchema = {
     page: 1,
-    limit: 10,
+    limit: 9,
     search: "",
     isLoading: false,
     data: []

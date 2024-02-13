@@ -1,15 +1,35 @@
-a,
-a:link,
-a:visited,
-a:active,
-a:hover {
-    color: var(--primary-color);
-}
-
 .card {
     display: flex;
     width: 200px;
-    border: 1.5px solid;
-    border-radius: 5px;
-    padding: 5px;
+    height: 200px;
+    padding: 10px;
+    background-image: url("/shared/assets/icons/card-215-215.png");
+    background-size: cover;
+    opacity: 0.9;
+
+    &:hover {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+}
+
+.content {
+    color: var(--secondary-color);
+}
+
+.image {
+    height: 140px;
+    width: 140px;
+    margin-top: 5px;
+    margin-left: 20px;
+    object-fit: cover;
+    rotate: (-2deg);
+    filter: sepia(0.5) drop-shadow(1px 1px var(--secondary-color))
+}
+
+.nameWrapper {
+    display: flex;
+    font-family: var(--handwrite-font);
+    font-size: large;
+    justify-content: end;
 }

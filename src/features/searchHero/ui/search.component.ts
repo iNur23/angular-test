@@ -9,6 +9,7 @@ import { selectSearchQuery } from '../model/selectors/search.selector';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { SvgComponent } from 'shared/ui/svg/svg.component';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,8 @@ import { Router } from '@angular/router';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    SvgComponent
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'

@@ -5,8 +5,8 @@
 
 .heroesList {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .search {
