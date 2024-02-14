@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-type TextVariant = 'title' | 'normal' | 'handwrite'
-type TextColor = 'primary' | 'secondary' | 'accent'
+type TextVariant = 'title' | 'subtitle' | 'normal' | 'handwrite'
+type TextColor = 'primary' | 'secondary' | 'accent' | 'green' | 'red'
 
 @Component({
   selector: 'app-text',

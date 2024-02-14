@@ -17,3 +17,8 @@ export const selectHeroIsLoading = createSelector(
     selectHero,
     (state) => state.isLoading
 );
+
+export const selectHeroSection = createSelector(
+    selectHero,
+    (state) => state.selectedSection
+);

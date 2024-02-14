@@ -5,6 +5,11 @@
     font-size: xx-large;
 }
 
+.subtitleVariant {
+    font-family: var(--title-font);
+    font-size: larger;
+}
+
 .normalVariant {
     font-family: var(--normal-font);
     font-size: large;
@@ -27,4 +32,12 @@
 
 .accentColor {
     color: var(--accent-color);
+}
+
+.greenColor {
+    color: var(--green-color);
+}
+
+.redColor {
+    color: var(--red-color);
 }

@@ -1,3 +1,5 @@
+export type HeroSection = 'powerstats' | 'biography' | 'appearance' | 'work' | 'connections';
+
 export interface Hero {
     id: string;
     name: string;
@@ -40,5 +42,6 @@ export interface Hero {
 export interface HeroSchema {
     data?: Hero;
     isLoading: boolean;
+    selectedSection: HeroSection;
     error?: string
 }

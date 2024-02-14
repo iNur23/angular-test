@@ -1,7 +1,6 @@
 button {
     cursor: pointer;
-    width: 100%;
-    height: 100%;
+    padding: 5px;
 
     &:hover {
         opacity: 0.8;
@@ -35,6 +34,11 @@ button {
 
 .linkLikeVariant {
     color: var(--accent-color);
+    background: none;
+    border: none;
+}
+
+.clearVariant {
     background: none;
     border: none;
 }

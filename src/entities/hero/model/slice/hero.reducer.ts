@@ -3,22 +3,31 @@ import { HeroSchema } from "../types/hero";
 import { heroActions } from "./hero.actions";
 
 const initialState: HeroSchema = {
-    isLoading: false
+    isLoading: false,
+    selectedSection: "biography"
 }
 
 export const heroReducer = createReducer(
     initialState,
     on(heroActions.loadHero, (state) => ({
+        ...state,
         isLoading: true,
         error: undefined
     })),
-    on(heroActions.loadHeroSuccess, (state, data) => ({
+    on(heroActions.loadHeroSuccess, (state, action) => ({
+        ...state,
         isLoading: false,
-        data,
+        data: action,
         error: undefined
     })),
-    on(heroActions.loadHeroError, (state, data) => ({
+    on(heroActions.loadHeroError, (state, action) => ({
+        ...state,
         isLoading: false,
-        error: data.error
+        error: action.error
+    })),
+    on(heroActions.setHeroSection, (state, action) => ({
+        ...state,
+        isLoading: false,
+        selectedSection: action.section
     }))
 )

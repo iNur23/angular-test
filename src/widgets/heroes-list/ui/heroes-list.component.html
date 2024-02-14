@@ -7,16 +7,14 @@
             <app-text variant="title">Search result: {{(search | async)}}</app-text>
         </div>
 
-        <div class="pagination">
+        <div class="pagination" *ngIf="(heroes | async)?.length">
             <app-button
                 variant="outline"
                 shape="cyrcle"
                 (click)="setPage(1)"
                 *ngIf="$any(page | async) > 2"
             >1</app-button>
-            <div *ngIf="$any(page | async) > 3">
-                ...
-            </div>
+            <div *ngIf="$any(page | async) > 3">...</div>
             <app-button
                 variant="outline"
                 shape="cyrcle"

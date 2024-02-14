@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Hero } from '../types/hero';
+import { Hero, HeroSection } from '../types/hero';
 
 const loadHero = createAction(
   '[Hero] Load Hero',
@@ -16,4 +16,9 @@ const loadHeroError = createAction(
   props<{ error: string }>()
 );
 
-export const heroActions = { loadHero, loadHeroSuccess, loadHeroError }
+const setHeroSection = createAction(
+  '[Hero] Set Hero Section',
+  props<{ section: HeroSection }>()
+);
+
+export const heroActions = { loadHero, loadHeroSuccess, loadHeroError, setHeroSection }

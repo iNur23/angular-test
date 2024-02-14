@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-type ButtonVariant = 'normal' | 'inverted' | 'outline' | 'accent' | 'linkLike'
+type ButtonVariant = 'normal' | 'inverted' | 'outline' | 'accent' | 'linkLike' | 'clear'
 type ButtonShape = 'normal' | 'cyrcle' 
 
 @Component({
