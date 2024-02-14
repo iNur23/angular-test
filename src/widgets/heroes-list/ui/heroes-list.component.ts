@@ -6,6 +6,7 @@ import { StateSchema } from 'app/store/store';
 import {
   selectHeroesListData,
   selectHeroesListError,
+  selectHeroesListHasMore,
   selectHeroesListIsLoading,
   selectHeroesListLimit,
   selectHeroesListPage,
@@ -41,6 +42,7 @@ export class HeroesListComponent implements OnInit {
   limit: Observable<number> = this.store.select(selectHeroesListLimit)
   heroes: Observable<Hero[]> = this.store.select(selectHeroesListData)
   isLoading: Observable<boolean> = this.store.select(selectHeroesListIsLoading)
+  hasMore: Observable<boolean> = this.store.select(selectHeroesListHasMore)
   error: Observable<string | undefined> = this.store.select(selectHeroesListError)
 
   setPage = (page: number) => {

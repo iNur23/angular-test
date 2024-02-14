@@ -1,9 +1,7 @@
-.contentWrapper {
-    display: flex;
-    flex-direction: column;
+.heroesList {
 }
 
-.heroesList {
+.heroCards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -11,6 +9,7 @@
 
 .header {
     display: flex;
+    min-width: 90vw;
     margin-bottom: 20px;
 }
 
@@ -19,12 +18,4 @@
     display: flex;
     gap: 10px;
     align-items: center;
-
-    button {
-        border: none;
-        background: none;
-        color: var(--primary-color);
-        font-weight: bold;
-        cursor: pointer;
-    }
 }

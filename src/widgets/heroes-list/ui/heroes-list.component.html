@@ -3,11 +3,15 @@
 <div *ngIf="!(isLoading | async)">
 
     <div class="header">
-        <div class="search" *ngIf="!!(search | async)">
-            <app-text variant="title">Search result: {{(search | async)}}</app-text>
-        </div>
+        <app-text
+            variant="title"
+            *ngIf="!!(search | async)"
+        >Search result: {{(search | async)}}</app-text>
 
-        <div class="pagination" *ngIf="(heroes | async)?.length">
+        <div
+            class="pagination"
+            *ngIf="(hasMore | async) || $any(page | async) !== 1"
+        >
             <app-button
                 variant="outline"
                 shape="cyrcle"
@@ -29,12 +33,12 @@
                 variant="outline"
                 shape="cyrcle"
                 (click)="setNextPage()"
-                *ngIf="$any(heroes | async).length >= $any(limit | async)"
+                *ngIf="hasMore | async"
             >{{ $any(page | async) + 1 }}</app-button>
         </div>
     </div>
 
-    <div class="heroesList">
+    <div class="heroCards">
         <app-hero-card *ngFor="let hero of (heroes | async)" [hero]="hero"></app-hero-card>
     </div>
 

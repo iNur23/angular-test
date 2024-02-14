@@ -31,3 +31,10 @@ export const selectHeroesListPageOptions = createSelector(
     selectHeroesList,
     ({ search, page, limit }) => ({ search, page, limit })
 );
+export const selectHeroesListHasMore = createSelector(
+    selectHeroesList,
+    ({ data, limit }) => {
+        if (data.length < limit) return false
+        else return true
+    }
+);
