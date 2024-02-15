@@ -1,0 +1,25 @@
+div {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    padding: 0 5px;
+    font-family: var(--handwrite-font);
+    color: inherit;
+    border-bottom: 1px solid;
+
+    &:focus {
+        outline: none;
+    }
+}
+    
+::placeholder {
+    color: inherit;
+    opacity: 0.6;
+}

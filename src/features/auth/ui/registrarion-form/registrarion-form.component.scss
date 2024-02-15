@@ -1,0 +1,42 @@
+.registrationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    background-color: var(--paper-color);
+    color: var(--secondary-color);
+    padding: 20px;
+    border: 1px solid var(--secondary-color);
+    filter: drop-shadow(3px 3px var(--paper-shadow-color));
+    rotate: (-1deg);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.imgWrapper {
+    border: 1px solid var(--paper-shadow-color);
+    display: flex;
+}
+
+.image {
+    height: 80px;
+    width: 60px;
+    object-fit: cover;
+    background-color: var(--paper-shadow-color);
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.submitBtn {
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+}

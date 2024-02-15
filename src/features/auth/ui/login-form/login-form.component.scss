@@ -1,0 +1,23 @@
+.loginForm {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+    align-items: center;
+}
+
+.submitBtn {
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.image {
+    height: 30px;
+    width: 30px;
+    background-color: var(--primary-color);
+}

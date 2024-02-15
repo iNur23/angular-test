@@ -1,6 +1,6 @@
 :host {
-    height: 100%;
-    width: 100%;
+    min-width: 20px;
+    min-height: 20px;
     background-color: black;
     -webkit-mask-size: contain;
     mask-size: contain;

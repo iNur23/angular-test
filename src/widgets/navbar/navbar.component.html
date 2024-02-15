@@ -1,7 +1,14 @@
 <header class="navbar">
   <app-search></app-search>
   <div class="authWrapper">
-    {{(userData | async)?.username}}
+    <div class="profile">
+      <img
+        *ngIf="(userData | async)?.avatar"
+        [src]="(userData | async)?.avatar"
+        class="avatar"
+      >
+      {{(userData | async)?.username}}
+    </div>
     <a routerLink="/login">
       <app-button
         *ngIf="!(userData | async)"

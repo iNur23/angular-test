@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SvgComponent } from 'shared/ui/svg/svg.component';
+import { InputComponent } from 'shared/ui/input/input.component';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +19,8 @@ import { SvgComponent } from 'shared/ui/svg/svg.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    SvgComponent
+    SvgComponent,
+    InputComponent
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'

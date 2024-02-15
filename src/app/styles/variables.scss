@@ -20,6 +20,7 @@
     --secondary-color: #060606;
     --accent-color: #FFF200;
     --paper-color: #F1EEE5;
+    --paper-shadow-color: hsl(from var(--paper-color) h s 60%);
     --overlay-color: #FBF4F43F;
     --green-color: #06B400;
     --red-color: #C20000;
@@ -29,5 +30,8 @@
 
     --normal-font: 'Rockwell';
 
-    --handwrite-font: 'Shadows Into Light'
+    --handwrite-font: 'Shadows Into Light';
+
+    // paddings
+    --page-padding: 30px;
 }

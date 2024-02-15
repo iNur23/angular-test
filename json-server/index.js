@@ -54,7 +54,7 @@ server.post('/login', (req, res) => {
 // Registration
 server.post('/registration', (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, ...otherData } = req.body;
 
         if (!username || !password) {
             return res.status(400).json({ message: 'Empty username or password' });
@@ -72,14 +72,14 @@ server.post('/registration', (req, res) => {
             return res.status(409).json({ message: 'User already exists' });
         }
 
-        users.push({ username, password })
+        users.push({ username, password, ...otherData })
         const newDbString = JSON.stringify({
             ...db,
             users
         }, null, 4)
 
         fs.writeFileSync(dbPath, newDbString)
-        return res.json({ username });
+        return res.json({ username, ...otherData });
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });

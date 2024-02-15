@@ -1,6 +1,12 @@
 button {
     cursor: pointer;
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    height: inherit;
+    text-decoration: inherit;
+    color: inherit;
 
     &:hover {
         opacity: 0.8;
@@ -23,8 +29,7 @@ button {
 
 .outlineVariant {
     background: none;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid;
 }
 
 .accentVariant {

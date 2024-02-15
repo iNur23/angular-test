@@ -1,0 +1,17 @@
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.typeBtns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.typeBtn.selected {
+    text-decoration: underline;
+}

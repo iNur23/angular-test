@@ -1,16 +1,19 @@
 .heroesList {
+    display: flex;
+    color: var(--primary-color);
 }
 
 .heroCards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
 .header {
     display: flex;
-    min-width: 90vw;
     margin-bottom: 20px;
+    width: calc(100vw - 2 * var(--page-padding));
 }
 
 .pagination{

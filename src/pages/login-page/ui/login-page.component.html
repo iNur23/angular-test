@@ -1,1 +1,19 @@
-<app-loginForm></app-loginForm>
+<div class="loginPage">
+    <app-text alignment="center" variant="title">Authorization</app-text>
+    <div class="typeBtns">
+        <app-button
+            (click)="setAuthType('signIn')"
+            class="typeBtn"
+            variant="clear"
+            [class.selected]="(authType | async) === 'signIn'"
+        >Sign in</app-button>
+        <app-button
+            (click)="setAuthType('signUp')"
+            variant="clear"
+            class="typeBtn"
+            [class.selected]="(authType | async) === 'signUp'"
+        >Sign up</app-button>
+    </div>
+    <app-login-form *ngIf="$any(authType | async) === 'signIn'"></app-login-form>
+    <app-registrarion-form *ngIf="$any(authType | async) === 'signUp'"></app-registrarion-form>
+</div>

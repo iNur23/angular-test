@@ -4,5 +4,8 @@ export interface LoginFormSchema {
     authType: AuthType;
     username: string;
     password: string;
-    error?: string
+    error?: string;
+    avatar?: string;
+    name?: string;
+    surname?: string
 }

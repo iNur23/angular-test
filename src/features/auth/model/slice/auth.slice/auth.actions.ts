@@ -1,11 +1,12 @@
 import { createAction, props } from '@ngrx/store';
+import { UserData } from '../../types/auth';
 
 const init = createAction('[Auth] Init');
 
 const logIn = createAction('[Auth] Log In');
 const logInSuccess = createAction(
     '[Auth] Log In Success',
-    props<{ username: string; }>()
+    props<UserData>()
 );
 const logInError = createAction(
     '[Auth] Log In Error',

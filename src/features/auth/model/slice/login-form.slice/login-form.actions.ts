@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthType } from '../../types/loginForm';
+import { AuthType } from '../../types/login-form';
 
 const setType = createAction(
     '[LoginForm] Set Type',
@@ -16,6 +16,23 @@ const setPassword = createAction(
     props<{ password: string }>()
 );
 
+const setName = createAction(
+    '[LoginForm] Set Name',
+    props<{ name: string }>()
+);
+
+
+const setSurname = createAction(
+    '[LoginForm] Set Surname',
+    props<{ surname: string }>()
+);
+
+
+const setAvatar = createAction(
+    '[LoginForm] Set Avatar',
+    props<{ avatar: string }>()
+);
+
 const clearForm = createAction('[LoginForm] Clear Form');
 
-export const loginFormActions = { setType, setUsername, setPassword, clearForm }
+export const loginFormActions = { setType, setUsername, setPassword, setName, setSurname, setAvatar, clearForm }

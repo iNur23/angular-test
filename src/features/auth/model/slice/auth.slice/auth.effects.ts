@@ -18,22 +18,22 @@ const authByUsername = createEffect((
         ofType(authActions.logIn),
         withLatestFrom(store.select(selectLoginForm)),
         mergeMap(([action, loginOptions]) => {
-            const { authType, username, password } = loginOptions
+            const { authType, ...authData } = loginOptions
 
             if (authType === "signIn") {
-                return authService.signIn({ username, password }).pipe(
+                return authService.signIn(authData).pipe(
                     map(userData => {
                         router.navigate(['/heroes'])
-                        return authActions.logInSuccess({username: userData.username})
+                        return authActions.logInSuccess(userData)
                     }),
                     catchError((error) => of(authActions.logInError({ error: error.message })))
                 )
             }
 
-            return authService.signUp({ username, password }).pipe(
+            return authService.signUp(authData).pipe(
                 map(userData => {
                     router.navigate(['/heroes'])
-                    return authActions.logInSuccess({username: userData.username})
+                    return authActions.logInSuccess(userData)
                 }),
                 catchError((error) => of(authActions.logInError({ error: error.message })))
             )

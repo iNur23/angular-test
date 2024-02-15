@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 type TextVariant = 'title' | 'subtitle' | 'normal' | 'handwrite'
-type TextColor = 'primary' | 'secondary' | 'accent' | 'green' | 'red'
+type TextSize = 'normal' | 'large'
+type TextAlign = 'center' | 'left' | 'right'
 
 @Component({
   selector: 'app-text',
@@ -15,5 +16,6 @@ type TextColor = 'primary' | 'secondary' | 'accent' | 'green' | 'red'
 })
 export class TextComponent {
   @Input() variant: TextVariant = 'normal'
-  @Input() color: TextColor = 'primary'
+  @Input() size: TextSize = 'normal'
+  @Input() alignment: TextAlign = 'left'
 }

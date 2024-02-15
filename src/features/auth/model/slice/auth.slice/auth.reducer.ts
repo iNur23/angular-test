@@ -24,12 +24,12 @@ export const authReducer = createReducer(
         isLoading: true
     })),
     on(authActions.logInSuccess, (state, action) => {
-        localStorage.setItem(USERDATA_LOCALSTORAGE_KEY, JSON.stringify({ username: action.username }))
+        localStorage.setItem(USERDATA_LOCALSTORAGE_KEY, JSON.stringify(action))
         return {
             ...state,
             error: undefined,
             isLoading: false,
-            userData: { username: action.username }
+            userData: action
         }
     }),
     on(authActions.logInError, (state, action) => ({

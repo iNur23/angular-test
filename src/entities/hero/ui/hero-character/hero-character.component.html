@@ -14,10 +14,7 @@
 
             <div class="imageWrapper">
                 <img src="{{(hero | async)?.image?.url}}" class="image">
-                <app-text
-                    variant="subtitle"
-                    color="secondary"
-                >{{(hero | async)?.biography?.publisher}}</app-text>
+                <app-text variant="subtitle">{{(hero | async)?.biography?.publisher}}</app-text>
             </div>
 
             <div class="tableWrapper">
@@ -28,7 +25,7 @@
                         [ngClass]="{'sectionBtn': true, 'selected': (section | async) === item}"
                         (click)="setSection(item)"
                     >
-                        <app-text variant="handwrite" color="secondary">{{item}}</app-text>
+                        <app-text variant="handwrite">{{item}}</app-text>
                     </app-button>
                 </div>
                 <table
@@ -36,10 +33,10 @@
                     *ngFor="let item of ['powerstats','biography','appearance','work','connections']"
                     [ngClass]="{'invisible': (section | async) !== item}"
                 >
-                    <th><app-text variant="subtitle" color="secondary">{{item}}</app-text></th>
+                    <th><app-text variant="subtitle">{{item}}</app-text></th>
                     <tr *ngFor="let prop of $any(hero | async)?.[item] | keyvalue">
-                        <td><app-text color="secondary">{{prop.key}}</app-text></td>
-                        <td><app-text variant="handwrite" color="secondary">{{prop.value}}</app-text></td>
+                        <td><app-text>{{prop.key}}</app-text></td>
+                        <td><app-text variant="handwrite">{{prop.value}}</app-text></td>
                     </tr>
                 </table>
             </div>

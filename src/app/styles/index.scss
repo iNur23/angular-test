@@ -13,7 +13,8 @@ body {
 
 .page {
     display: flex;
-    padding: 30px;
+    justify-content: center;
+    padding: var(--page-padding);
     height: calc(100vh - var(--navbar-height));
     overflow: auto;
 }

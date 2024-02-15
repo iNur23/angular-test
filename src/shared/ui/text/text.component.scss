@@ -1,43 +1,47 @@
+p {
+    color: inherit;
+}
+
 // types
 
 .titleVariant {
     font-family: var(--title-font);
-    font-size: xx-large;
+    font-size: xx-large !important;
 }
 
 .subtitleVariant {
     font-family: var(--title-font);
-    font-size: larger;
+    font-size: larger !important;
 }
 
 .normalVariant {
     font-family: var(--normal-font);
-    font-size: large;
 }
 
 .handwriteVariant {
     font-family: var(--handwrite-font);
+}
+
+// sizes
+
+.normalSize {
+    font-size: medium
+}
+
+.largeSize {
     font-size: large;
 }
 
-// colors
+// alignment
 
-.primaryColor {
-    color: var(--primary-color);
+.centerAlign {
+    text-align: center;
 }
 
-.secondaryColor {
-    color: var(--secondary-color);
+.leftAlign {
+    text-align: left;
 }
 
-.accentColor {
-    color: var(--accent-color);
-}
-
-.greenColor {
-    color: var(--green-color);
-}
-
-.redColor {
-    color: var(--red-color);
+.rightAlign {
+    text-align: right;
 }

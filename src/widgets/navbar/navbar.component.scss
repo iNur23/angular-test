@@ -1,10 +1,10 @@
 .navbar {
     height: var(--navbar-height);
     width: 100%;
-    background-color: var(--secondary-color);
+    background-color: hsl(from var(--secondary-color) h s 15%);
     display: flex;
     align-items: center;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid  hsl(from var(--secondary-color) h s 30%);
 }
 
 .authWrapper {
@@ -13,4 +13,18 @@
     gap: 10px;
     margin-left: auto;
     margin-right: 15px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border: 1px solid;
+    border-radius: 50%;
 }
