@@ -1,3 +1,7 @@
+export { selectHeroData, selectHeroError, selectHeroIsLoading } from "./model/selectors/hero.selectors";
+
+export { heroActions } from "./model/slice/hero.actions";
+
 export { heroEffects } from "./model/slice/hero.effects";
 
 export { heroReducer } from "./model/slice/hero.reducer";

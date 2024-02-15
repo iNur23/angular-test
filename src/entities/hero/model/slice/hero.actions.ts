@@ -21,4 +21,6 @@ const setHeroSection = createAction(
   props<{ section: HeroSection }>()
 );
 
-export const heroActions = { loadHero, loadHeroSuccess, loadHeroError, setHeroSection }
+const clearHero = createAction('[Hero] Clear Hero');
+
+export const heroActions = { loadHero, loadHeroSuccess, loadHeroError, setHeroSection, clearHero }

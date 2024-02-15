@@ -29,5 +29,6 @@ export const heroReducer = createReducer(
         ...state,
         isLoading: false,
         selectedSection: action.section
-    }))
+    })),
+    on(heroActions.clearHero, () => initialState)
 )

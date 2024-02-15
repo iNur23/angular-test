@@ -1,46 +1,33 @@
-<div>
-    <a routerLink="/heroes">
-        <app-button variant="linkLike" class="returnBtn">Return to heroes list</app-button>
-    </a>
-    {{ (isLoading | async) ? "loading" : null}}
-    {{ error | async }}
-    <div
-        *ngIf="!(isLoading | async) && !(error | async)"
-        class="heroCharacter"
-    >
-        <app-text variant="title">{{ (hero | async)?.name }}</app-text>
+<app-text variant="title">{{ hero.name }}</app-text>
+<div class="statsWrapper">
 
-        <div class="statsWrapper">
-
-            <div class="imageWrapper">
-                <img [src]="(hero | async)?.image?.url" class="image">
-                <app-text variant="subtitle">{{(hero | async)?.biography?.publisher}}</app-text>
-            </div>
-
-            <div class="tableWrapper">
-                <div class="sectionBtnWrapper">
-                    <app-button
-                        *ngFor="let item of ['powerstats','biography','appearance','work','connections']"
-                        variant="clear"
-                        [ngClass]="{'sectionBtn': true, 'selected': (section | async) === item}"
-                        (click)="setSection(item)"
-                    >
-                        <app-text variant="handwrite">{{item}}</app-text>
-                    </app-button>
-                </div>
-                <table
-                    class="table"
-                    *ngFor="let item of ['powerstats','biography','appearance','work','connections']"
-                    [ngClass]="{'invisible': (section | async) !== item}"
-                >
-                    <th><app-text variant="subtitle">{{item}}</app-text></th>
-                    <tr *ngFor="let prop of $any(hero | async)?.[item] | keyvalue">
-                        <td><app-text>{{prop.key}}</app-text></td>
-                        <td><app-text variant="handwrite">{{prop.value}}</app-text></td>
-                    </tr>
-                </table>
-            </div>
-            
-        </div>
+    <div class="imageWrapper">
+        <img [src]="hero.image.url" class="image">
+        <app-text variant="subtitle">{{hero.biography.publisher}}</app-text>
     </div>
+
+    <div class="tableWrapper">
+        <div class="sectionBtnWrapper">
+            <app-button
+                *ngFor="let item of ['powerstats','biography','appearance','work','connections']"
+                variant="clear"
+                [ngClass]="{'sectionBtn': true, 'selected': (section | async) === item}"
+                (click)="setSection(item)"
+            >
+                <app-text variant="handwrite">{{item}}</app-text>
+            </app-button>
+        </div>
+        <table
+            class="table"
+            *ngFor="let item of ['powerstats','biography','appearance','work','connections']"
+            [ngClass]="{'invisible': (section | async) !== item}"
+        >
+            <th><app-text variant="subtitle">{{item}}</app-text></th>
+            <tr *ngFor="let prop of $any(hero)[item] | keyvalue">
+                <td><app-text>{{prop.key}}</app-text></td>
+                <td><app-text variant="handwrite">{{prop.value}}</app-text></td>
+            </tr>
+        </table>
+    </div>
+    
 </div>

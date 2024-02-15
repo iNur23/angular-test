@@ -1,1 +1,14 @@
-<app-hero-character [id]="id"></app-hero-character>
+<div class="heroPage">
+    <div class="header">
+        <a routerLink="/heroes">
+            <app-button variant="linkLike" class="returnBtn">Return to heroes list</app-button>
+        </a>
+    </div>
+    {{ (isLoading | async) ? "loading" : null}}
+    {{ error | async }}
+    <app-hero-character
+        *ngIf="hero | async"
+        [hero]="(hero | async)!"
+        class="heroCharacter"
+    ></app-hero-character>
+</div>
