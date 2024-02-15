@@ -3,7 +3,7 @@
         type="text"
         (input)="onChangeSearch($event.target)"
         (keydown.enter)="onSubmit()"
-        value="{{query}}"
+        [value]="query"
         placeholder="Search hero"
     ></app-input>
     <button class="btn" type="button" (click)="onSubmit()">

@@ -1,6 +1,6 @@
 <a routerLink="/heroes/{{hero.id}}" class="card">
     <div class="content">
-        <img src="{{hero.image.url}}" class="image">
+        <img [src]="hero.image.url" class="image">
         <app-text
             class="nameWrapper"
             size="large"

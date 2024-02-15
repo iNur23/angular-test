@@ -8,14 +8,14 @@
       placeholder="Username"
       (keydown.enter)="onSubmit()"
       (keyup)="onChangeUsername($event.target)"
-      value="{{ (username | async) }}"
+      [value]="(username | async) || ''"
     ></app-input>
     <app-input
       type="password"
       placeholder="Password"
       (keydown.enter)="onSubmit()"
       (keyup)="onChangePassword($event.target)"
-      value="{{ (password | async) }}"
+      [value]="(password | async) || ''"
     ></app-input>
     <app-button
       (click)="onSubmit()"

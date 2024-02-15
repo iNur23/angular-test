@@ -10,12 +10,12 @@ export const selectAuthType = createSelector(
 
 export const selectLoginFormUsername = createSelector(
     selectLoginForm,
-    (state) => state.username
+    (state) => state.username || ''
 );
 
 export const selectLoginFormPassword = createSelector(
     selectLoginForm,
-    (state) => state.password
+    (state) => state.password || ''
 );
 
 export const selectLoginFormError = createSelector(
