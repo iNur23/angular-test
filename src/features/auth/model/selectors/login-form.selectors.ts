@@ -18,9 +18,9 @@ export const selectLoginFormPassword = createSelector(
     (state) => state.password || ''
 );
 
-export const selectLoginFormError = createSelector(
+export const selectLoginFormErrors = createSelector(
     selectLoginForm,
-    (state) => state.error
+    (state) => state.error || {}
 );
 
 export const selectLoginFormAvatar = createSelector(

@@ -1,6 +1,4 @@
-<form class="registrationForm">
-    {{(validationError | async) ? (validationError | async) : null}}
-
+<form class="registrationForm" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="header">
       <div class="imgWrapper">
         <app-svg
@@ -18,42 +16,44 @@
         <app-input
           type="text"
           placeholder="Username"
-          (keydown.enter)="onSubmit()"
           (keyup)="onChangeUsername($event.target)"
           [value]="(username | async) || ''"
-          minlength
+          [formControl]="form.controls.username"
+          [error]="(validationErrors | async)?.username"
+          minlength="6"
+          required
         ></app-input>
         <app-input
           type="password"
           placeholder="Password"
-          (keydown.enter)="onSubmit()"
           (keyup)="onChangePassword($event.target)"
           [value]="(password | async) || ''"
+          [formControl]="form.controls.password"
+          [error]="(validationErrors | async)?.password"
+          minlength="6"
+          required
         ></app-input>
       </div>
     </div>
     <div class="inputs">
       <app-input
         placeholder="Avatar URL"
-        (keydown.enter)="onSubmit()"
         (keyup)="onChangeAvatar($event.target)"
         [value]="(avatar | async) || ''"
       ></app-input>
       <app-input
         placeholder="Name"
-        (keydown.enter)="onSubmit()"
         (keyup)="onChangeName($event.target)"
         [value]="(name | async) || ''"
       ></app-input>
       <app-input
         placeholder="Surname"
-        (keydown.enter)="onSubmit()"
         (keyup)="onChangeSurname($event.target)"
         [value]="(surname | async) || ''"
       ></app-input>
     </div>
     <app-button
-      (click)="onSubmit()"
+      type="submit"
       class="submitBtn"
       variant="outline"
     >Sign up</app-button>

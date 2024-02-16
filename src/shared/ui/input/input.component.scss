@@ -1,4 +1,9 @@
-div {
+.appInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputWrapper {
     margin-left: 20px;
     display: flex;
     align-items: center;
@@ -17,6 +22,12 @@ input {
     &:focus {
         outline: none;
     }
+}
+
+.error {
+    margin-left: auto;
+    color: var(--app-red-color);
+    height: 0;
 }
     
 ::placeholder {

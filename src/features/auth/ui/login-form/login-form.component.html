@@ -1,26 +1,28 @@
 <div class="loginForm">
   
-  <form class="form">
-    {{(validationError | async) ? (validationError | async) : null}}
-
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <app-input
       type="text"
       placeholder="Username"
-      (keydown.enter)="onSubmit()"
       (keyup)="onChangeUsername($event.target)"
-      [value]="(username | async) || ''"
+      [value]="(username | async)!"
+      [formControl]="form.controls.username"
+      [error]="(validationErrors | async)?.username"
+      required
     ></app-input>
     <app-input
       type="password"
       placeholder="Password"
-      (keydown.enter)="onSubmit()"
       (keyup)="onChangePassword($event.target)"
-      [value]="(password | async) || ''"
+      [value]="(password | async)!"
+      [formControl]="form.controls.password"
+      [error]="(validationErrors | async)?.password"
+      required
     ></app-input>
     <app-button
-      (click)="onSubmit()"
       class="submitBtn"
       variant="clear"
+      type="submit"
     >
       <app-svg class="image" [path]="'shared/assets/icons/fingerprint.svg'"></app-svg>
       <app-text>Sign in</app-text>

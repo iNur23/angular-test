@@ -1,8 +1,17 @@
-<div>
-    <app-text>{{placeholder}}</app-text>
-    <input
-        [value]="value"
-        placeholder="type here"
-        [type]="type"
-    >
+<div class="appInput">
+    <div class="inputWrapper">
+        <app-text>{{placeholder}}</app-text>
+        <input
+            [value]="value"
+            placeholder="type there"
+            [type]="type"
+            [formControl]="formControl"
+        >
+    </div>
+    <app-text
+        *ngIf="!!error"
+        variant="handwrite"
+        class="error"
+        size="small"
+    >{{error}}</app-text>
 </div>

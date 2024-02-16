@@ -33,6 +33,7 @@ export class LoginPageComponent {
   authError: Observable<string | undefined> = this.store.select(selectAuthError)
 
   setAuthType(type: AuthType) {
+    this.store.dispatch(loginFormActions.clearForm())
     this.store.dispatch(loginFormActions.setType({ authType: type }))
   }
 }

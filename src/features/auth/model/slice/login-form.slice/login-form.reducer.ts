@@ -8,7 +8,8 @@ const initialState: LoginFormSchema = {
     password: "",
     avatar: "",
     name: "",
-    surname: ""
+    surname: "",
+    error: {}
 }
 
 export const loginFormReducer = createReducer(
@@ -36,6 +37,10 @@ export const loginFormReducer = createReducer(
     on(loginFormActions.setAvatar, (state, action) => ({
         ...state,
         avatar: action.avatar
+    })),
+    on(loginFormActions.setErrors, (state, action) => ({
+        ...state,
+        error: action.errors
     })),
     on(loginFormActions.clearForm, () => initialState)
 )

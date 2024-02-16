@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 type TextVariant = 'title' | 'subtitle' | 'normal' | 'handwrite'
-type TextSize = 'normal' | 'large'
+type TextSize = 'small' | 'normal' | 'large'
 type TextAlign = 'center' | 'left' | 'right'
 
 @Component({
