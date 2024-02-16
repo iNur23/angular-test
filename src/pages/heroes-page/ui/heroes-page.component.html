@@ -1,1 +1,20 @@
-<app-heroes-list></app-heroes-list>
+<div class="heroesPage">
+    <div *ngIf="!(isLoading | async)">
+        <div class="header">
+            <app-text
+                variant="title"
+                *ngIf="!!(search | async)"
+            >Search result: {{(search | async)}}</app-text>
+            <app-heroes-pagination class="pagination"></app-heroes-pagination>
+            <app-text
+                *ngIf="(error | async)"
+                variant="handwrite"
+                size="large"
+                class="statusMessage"
+                alignment="center"
+            >{{error | async}}</app-text>
+        </div>
+        <app-heroes-list *ngIf="(heroes | async)" [heroes]="(heroes | async)!"></app-heroes-list>
+    </div>
+    <app-loader *ngIf="isLoading | async"></app-loader>
+</div>

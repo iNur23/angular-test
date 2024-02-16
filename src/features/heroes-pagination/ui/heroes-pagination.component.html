@@ -1,0 +1,28 @@
+<div
+    class="pagination"
+    *ngIf="(hasMore | async) || $any(page | async) !== 1"
+>
+    <app-button
+        variant="outline"
+        shape="cyrcle"
+        (click)="setPage(1)"
+        *ngIf="$any(page | async) > 2"
+    >1</app-button>
+    <div *ngIf="$any(page | async) > 3">...</div>
+    <app-button
+        variant="outline"
+        shape="cyrcle"
+        (click)="setPreviousPage()"
+        *ngIf="$any(page | async) > 1"
+    >{{ $any(page | async) - 1 }}</app-button>
+    <app-button
+        variant="inverted"
+        shape="cyrcle"
+    >{{ page | async }}</app-button>
+    <app-button
+        variant="outline"
+        shape="cyrcle"
+        (click)="setNextPage()"
+        *ngIf="hasMore | async"
+    >{{ $any(page | async) + 1 }}</app-button>
+</div>

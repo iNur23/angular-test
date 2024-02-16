@@ -1,7 +1,7 @@
 import { ActionReducerMap } from "@ngrx/store";
 import { heroEffects, HeroSchema, heroReducer } from "entities/hero";
 import { AuthSchema, LoginFormSchema, authEffects, authReducer, loginFormReducer } from "features/auth";
-import { SearchSchema, searchReducer } from "features/searchHero";
+import { SearchSchema, searchReducer } from "features/search-hero";
 import { HeroesListSchema, heroesListEffects, heroesListReducer } from "widgets/heroes-list";
 
 export interface StateSchema {

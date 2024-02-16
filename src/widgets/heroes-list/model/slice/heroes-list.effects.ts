@@ -14,7 +14,7 @@ const loadHero = createEffect((actions$ = inject(Actions), heroesService = injec
         mergeMap(([action, pageOptions]) => {
             return heroesService.getWithParams(pageOptions).pipe(
                 map(heroesList => heroesListActions.loadHeroesListSuccess({heroes: heroesList})),
-                catchError((error) => of(heroesListActions.loadHeroesListError({ error: error.message })))
+                catchError((error) => of(heroesListActions.loadHeroesListError({ error: error.statusText })))
             )
         })
     )

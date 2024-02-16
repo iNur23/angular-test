@@ -1,3 +1,13 @@
+export {
+    selectHeroesListLimit,
+    selectHeroesListPage,
+    selectHeroesListHasMore,
+    selectHeroesListIsLoading,
+    selectHeroesListError,
+    selectHeroesListSearch,
+    selectHeroesListData
+} from "./model/selectors/heroes-list.selectors";
+
 export { HeroesListSchema } from "./model/types/heroes-list";
 
 export { heroesListActions } from "./model/slice/heroes-list.actions";

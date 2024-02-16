@@ -1,45 +1,9 @@
-{{ (isLoading | async) ? "loading" : null}}
-{{ (error | async) ? (error | async) : null }}
-<div *ngIf="!(isLoading | async)">
-
-    <div class="header">
-        <app-text
-            variant="title"
-            *ngIf="!!(search | async)"
-        >Search result: {{(search | async)}}</app-text>
-
-        <div
-            class="pagination"
-            *ngIf="(hasMore | async) || $any(page | async) !== 1"
-        >
-            <app-button
-                variant="outline"
-                shape="cyrcle"
-                (click)="setPage(1)"
-                *ngIf="$any(page | async) > 2"
-            >1</app-button>
-            <div *ngIf="$any(page | async) > 3">...</div>
-            <app-button
-                variant="outline"
-                shape="cyrcle"
-                (click)="setPreviousPage()"
-                *ngIf="$any(page | async) > 1"
-            >{{ $any(page | async) - 1 }}</app-button>
-            <app-button
-                variant="inverted"
-                shape="cyrcle"
-            >{{ page | async }}</app-button>
-            <app-button
-                variant="outline"
-                shape="cyrcle"
-                (click)="setNextPage()"
-                *ngIf="hasMore | async"
-            >{{ $any(page | async) + 1 }}</app-button>
-        </div>
-    </div>
-
-    <div class="heroCards">
-        <app-hero-card *ngFor="let hero of (heroes | async)" [hero]="hero"></app-hero-card>
-    </div>
-
+<div class="heroCards" *ngIf="heroes.length">
+    <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
 </div>
+<app-text
+    class="heroCards" *ngIf="!heroes.length"
+    variant="subtitle"
+    alignment="left"
+    class="notFound"
+>No heroes found</app-text>

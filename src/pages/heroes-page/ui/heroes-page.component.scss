@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    margin-bottom: 20px;
+    width: calc(100vw - 2 * var(--page-padding));
+}
+
+.pagination {
+    margin-left: auto;
+}
+
+.statusMessage {
+    height: 30px;
+    width: 100%;
+    background-color: var(--red-color);
+}
