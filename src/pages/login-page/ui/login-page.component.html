@@ -1,5 +1,18 @@
 <div class="loginPage">
     <app-text alignment="center" variant="title">Authorization</app-text>
+    <app-text
+        variant="handwrite"
+        size="large"
+        class="statusMessage"
+        alignment="center"
+        [ngClass]="{
+            'red': !!(authError | async),
+            'green': (isAuthorized | async)
+        }"
+    >
+        {{authError | async}}
+        {{(isAuthorized | async) ? 'AUTHORIZED' : null}}
+    </app-text>
     <div class="typeBtns">
         <app-button
             (click)="setAuthType('signIn')"
@@ -14,6 +27,7 @@
             [class.selected]="(authType | async) === 'signUp'"
         >Sign up</app-button>
     </div>
-    <app-login-form *ngIf="$any(authType | async) === 'signIn'"></app-login-form>
-    <app-registrarion-form *ngIf="$any(authType | async) === 'signUp'"></app-registrarion-form>
+    <app-login-form *ngIf="$any(authType | async) === 'signIn' && !(isLoading | async)"></app-login-form>
+    <app-registrarion-form *ngIf="$any(authType | async) === 'signUp' && !(isLoading | async)"></app-registrarion-form>
+    <app-loader *ngIf="isLoading | async"></app-loader>
 </div>

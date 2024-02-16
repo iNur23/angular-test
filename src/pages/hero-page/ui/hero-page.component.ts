@@ -12,6 +12,7 @@ import {
 } from 'entities/hero';
 import { Observable } from 'rxjs';
 import { ButtonComponent } from 'shared/ui/button/button.component';
+import { LoaderComponent } from 'shared/ui/loader/loader.component';
 
 @Component({
   selector: 'app-hero-page',
@@ -20,7 +21,8 @@ import { ButtonComponent } from 'shared/ui/button/button.component';
     CommonModule,
     RouterModule,
     HeroCharacterComponent,
-    ButtonComponent
+    ButtonComponent,
+    LoaderComponent
   ],
   templateUrl: './hero-page.component.html',
   styleUrl: './hero-page.component.scss'

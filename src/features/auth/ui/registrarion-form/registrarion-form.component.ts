@@ -64,6 +64,7 @@ export class RegistrarionFormComponent {
     const errors = LoginFormErrorsService.getErrors(this.form)
     if (errors) return this.store.dispatch(loginFormActions.setErrors({errors}))
 
+    this.store.dispatch(loginFormActions.setErrors({ errors: {} }))
     this.store.dispatch(authActions.logIn())
   }
 }

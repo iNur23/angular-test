@@ -13,6 +13,8 @@ const logInError = createAction(
     props<{ error: string; }>()
 );
 
+const clearError = createAction('[Auth] Clear Error');
+
 const logOut = createAction('[Auth] Log Out');
 
-export const authActions = { init, logIn, logInSuccess, logInError, logOut }
+export const authActions = { init, logIn, logInSuccess, logInError, logOut, clearError }

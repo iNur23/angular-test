@@ -30,7 +30,8 @@ server.post('/login', (req, res) => {
         const { username, password } = req.body;
 
         if (!username || !password) {
-            return res.status(400).json({ message: 'Empty username or password' });
+            res.statusMessage = 'Empty username or password'
+            return res.status(400).end();
         }
         
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
@@ -44,10 +45,12 @@ server.post('/login', (req, res) => {
             return res.json({ ...userFromBd, password: undefined });
         }
 
-        return res.status(403).json({ message: 'User not found' });
+        res.statusMessage = 'User not found'
+        return res.status(403).end();
     } catch (e) {
         console.log(e);
-        return res.status(500).json({ message: e.message });
+        res.statusMessage = e.message
+        return res.status(500).end();
     }
 });
 
@@ -57,7 +60,8 @@ server.post('/registration', (req, res) => {
         const { username, password, ...otherData } = req.body;
 
         if (!username || !password) {
-            return res.status(400).json({ message: 'Empty username or password' });
+            res.statusMessage = 'Empty username or password'
+            return res.status(400).end();
         }
 
         const dbPath = path.resolve(__dirname, 'db.json')
@@ -69,7 +73,8 @@ server.post('/registration', (req, res) => {
         );
 
         if (userFromBd) {
-            return res.status(409).json({ message: 'User already exists' });
+            res.statusMessage = 'User already exists'
+            return res.status(409).end();
         }
 
         users.push({ username, password, ...otherData })
@@ -82,7 +87,8 @@ server.post('/registration', (req, res) => {
         return res.json({ username, ...otherData });
     } catch (e) {
         console.log(e);
-        return res.status(500).json({ message: e.message });
+        res.statusMessage = e.message
+        return res.status(500).end();
     }
 });
 

@@ -26,7 +26,7 @@ const authByUsername = createEffect((
                         router.navigate(['/heroes'])
                         return authActions.logInSuccess(userData)
                     }),
-                    catchError((error) => of(authActions.logInError({ error: error.message })))
+                    catchError((error) => of(authActions.logInError({ error: error.statusText })))
                 )
             }
 
@@ -35,7 +35,7 @@ const authByUsername = createEffect((
                     router.navigate(['/heroes'])
                     return authActions.logInSuccess(userData)
                 }),
-                catchError((error) => of(authActions.logInError({ error: error.message })))
+                catchError((error) => of(authActions.logInError({ error: error.statusText })))
             )
         })
     )

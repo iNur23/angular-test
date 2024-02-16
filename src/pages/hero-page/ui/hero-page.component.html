@@ -4,7 +4,7 @@
             <app-button variant="linkLike" class="returnBtn">Return to heroes list</app-button>
         </a>
     </div>
-    {{ (isLoading | async) ? "loading" : null}}
+    <app-loader *ngIf="isLoading | async"></app-loader>
     {{ error | async }}
     <app-hero-character
         *ngIf="hero | async"

@@ -56,6 +56,7 @@ export class LoginFormComponent {
     const errors = LoginFormErrorsService.getErrors(this.form)
     if (errors) return this.store.dispatch(loginFormActions.setErrors({errors}))
 
+    this.store.dispatch(loginFormActions.setErrors({ errors: {} }))
     this.store.dispatch(authActions.logIn())
     this.store.dispatch(loginFormActions.clearForm())
     this.form.reset()

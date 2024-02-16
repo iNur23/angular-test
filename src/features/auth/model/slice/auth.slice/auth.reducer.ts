@@ -21,7 +21,8 @@ export const authReducer = createReducer(
     }),
     on(authActions.logIn, (state, action) => ({
         ...state,
-        isLoading: true
+        isLoading: true,
+        error: undefined
     })),
     on(authActions.logInSuccess, (state, action) => {
         localStorage.setItem(USERDATA_LOCALSTORAGE_KEY, JSON.stringify(action))
@@ -41,4 +42,8 @@ export const authReducer = createReducer(
         localStorage.removeItem(USERDATA_LOCALSTORAGE_KEY)
         return initialState
     }),
+    on(authActions.clearError, (state) => ({
+        ...state,
+        error: undefined
+    }))
 )
