@@ -26,7 +26,10 @@ const authByUsername = createEffect((
                         router.navigate(['/heroes'])
                         return authActions.logInSuccess(userData)
                     }),
-                    catchError((error) => of(authActions.logInError({ error: error.statusText })))
+                    catchError((error) => {
+                        if (error?.status === 0) return of(authActions.logInError({ error: 'Server is not responding' }))
+                        return of(authActions.logInError({ error: error.statusText }))
+                    })
                 )
             }
 
@@ -35,7 +38,10 @@ const authByUsername = createEffect((
                     router.navigate(['/heroes'])
                     return authActions.logInSuccess(userData)
                 }),
-                catchError((error) => of(authActions.logInError({ error: error.statusText })))
+                catchError((error) => {
+                    if (error?.status === 0) return of(authActions.logInError({ error: 'Server is not responding' }))
+                    return of(authActions.logInError({ error: error.statusText }))
+                })
             )
         })
     )

@@ -10,7 +10,10 @@ const loadHero = createEffect((actions$ = inject(Actions), heroService = inject(
         exhaustMap(action => {
             return heroService.getById(action.id).pipe(
                 map(hero => heroActions.loadHeroSuccess(hero)),
-                catchError((error) => of(heroActions.loadHeroError({ error: error.statusText })))
+                catchError((error) => {
+                    if (error?.status === 0) return of(heroActions.loadHeroError({ error: 'Server is not responding' }))
+                    return of(heroActions.loadHeroError({ error: error.statusText }))
+                })
             )
         })
     )

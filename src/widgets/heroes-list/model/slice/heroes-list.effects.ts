@@ -14,7 +14,10 @@ const loadHero = createEffect((actions$ = inject(Actions), heroesService = injec
         mergeMap(([action, pageOptions]) => {
             return heroesService.getWithParams(pageOptions).pipe(
                 map(heroesList => heroesListActions.loadHeroesListSuccess({heroes: heroesList})),
-                catchError((error) => of(heroesListActions.loadHeroesListError({ error: error.statusText })))
+                catchError((error) => {
+                    if (error?.status === 0) return of(heroesListActions.loadHeroesListError({ error: 'Server is not responding' }))
+                    return of(heroesListActions.loadHeroesListError({ error: error.statusText }))
+                })
             )
         })
     )

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import { heroesListActions } from 'widgets/heroes-list';
-import { selectHeroesListSearch } from 'widgets/heroes-list/model/selectors/heroes-list.selectors';
 import { searchActions } from '../model/slice/search.actions';
 import { selectSearchQuery } from '../model/selectors/search.selector';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SvgComponent } from 'shared/ui/svg/svg.component';
