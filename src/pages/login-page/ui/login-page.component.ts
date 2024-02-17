@@ -16,6 +16,7 @@ import { selectAuthIsLoading } from 'features/auth/model/selectors/auth.selector
 import { Observable } from 'rxjs';
 import { ButtonComponent } from 'shared/ui/button/button.component';
 import { LoaderComponent } from 'shared/ui/loader/loader.component';
+import { StatusMessageComponent } from 'shared/ui/status-message/status-message.component';
 import { TextComponent } from 'shared/ui/text/text.component';
 
 @Component({
@@ -27,7 +28,8 @@ import { TextComponent } from 'shared/ui/text/text.component';
     RegistrarionFormComponent,
     ButtonComponent,
     TextComponent,
-    LoaderComponent
+    LoaderComponent,
+    StatusMessageComponent
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'

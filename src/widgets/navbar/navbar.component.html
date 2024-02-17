@@ -1,5 +1,5 @@
 <header class="navbar">
-  <app-search></app-search>
+  <app-search *ngIf="isAuthorized | async"></app-search>
   <div class="authWrapper">
     <div class="profile">
       <img

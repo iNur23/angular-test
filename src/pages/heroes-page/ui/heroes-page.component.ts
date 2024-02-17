@@ -6,6 +6,7 @@ import { Hero } from 'entities/hero';
 import { HeroesPaginationComponent } from 'features/heroes-pagination';
 import { Observable } from 'rxjs';
 import { LoaderComponent } from 'shared/ui/loader/loader.component';
+import { StatusMessageComponent } from 'shared/ui/status-message/status-message.component';
 import { TextComponent } from 'shared/ui/text/text.component';
 import {
   HeroesListComponent,
@@ -24,7 +25,8 @@ import {
     HeroesListComponent,
     TextComponent,
     HeroesPaginationComponent,
-    LoaderComponent
+    LoaderComponent,
+    StatusMessageComponent
   ],
   templateUrl: './heroes-page.component.html',
   styleUrl: './heroes-page.component.scss'

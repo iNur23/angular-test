@@ -13,6 +13,7 @@ import {
 import { Observable } from 'rxjs';
 import { ButtonComponent } from 'shared/ui/button/button.component';
 import { LoaderComponent } from 'shared/ui/loader/loader.component';
+import { StatusMessageComponent } from 'shared/ui/status-message/status-message.component';
 
 @Component({
   selector: 'app-hero-page',
@@ -22,7 +23,8 @@ import { LoaderComponent } from 'shared/ui/loader/loader.component';
     RouterModule,
     HeroCharacterComponent,
     ButtonComponent,
-    LoaderComponent
+    LoaderComponent,
+    StatusMessageComponent
   ],
   templateUrl: './hero-page.component.html',
   styleUrl: './hero-page.component.scss'

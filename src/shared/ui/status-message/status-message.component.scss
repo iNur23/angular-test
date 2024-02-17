@@ -1,0 +1,15 @@
+.statusMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.negative {
+    background-color: var(--red-color);
+}
+.positive {
+    background-color: var(--green-color);
+}

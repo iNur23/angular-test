@@ -16,15 +16,3 @@
 .typeBtn.selected {
     text-decoration: underline;
 }
-
-.statusMessage {
-    height: 30px;
-    width: 100%;
-
-    &.red {
-        background-color: var(--red-color);
-    }
-    &.green {
-        background-color: var(--green-color);
-    }
-}

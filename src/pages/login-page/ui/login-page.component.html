@@ -1,18 +1,10 @@
 <div class="loginPage">
     <app-text alignment="center" variant="title">Authorization</app-text>
-    <app-text
-        variant="handwrite"
-        size="large"
-        class="statusMessage"
-        alignment="center"
-        [ngClass]="{
-            'red': !!(authError | async),
-            'green': (isAuthorized | async)
-        }"
+    <app-status-message
+        [variant]="!!(authError | async) ? 'negative' : 'neutral'"
     >
         {{authError | async}}
-        {{(isAuthorized | async) ? 'AUTHORIZED' : null}}
-    </app-text>
+    </app-status-message>
     <div class="typeBtns">
         <app-button
             (click)="setAuthType('signIn')"

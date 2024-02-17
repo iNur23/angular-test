@@ -5,7 +5,7 @@
         </a>
     </div>
     <app-loader *ngIf="isLoading | async"></app-loader>
-    {{ error | async }}
+    <app-status-message *ngIf="error | async" variant="negative">{{ error | async }}</app-status-message>
     <app-hero-character
         *ngIf="hero | async"
         [hero]="(hero | async)!"
