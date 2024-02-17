@@ -5,7 +5,6 @@
       type="text"
       placeholder="Username"
       (keyup)="onChangeUsername($event.target)"
-      [value]="(username | async)!"
       [formControl]="form.controls.username"
       [error]="(validationErrors | async)?.username"
       required
@@ -14,7 +13,6 @@
       type="password"
       placeholder="Password"
       (keyup)="onChangePassword($event.target)"
-      [value]="(password | async)!"
       [formControl]="form.controls.password"
       [error]="(validationErrors | async)?.password"
       required

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import {
@@ -34,7 +34,7 @@ import { TextComponent } from 'shared/ui/text/text.component';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnDestroy {
   constructor(private store: Store<StateSchema>) {}
   authType: Observable<AuthType> = this.store.select(selectAuthType)
   authError: Observable<string | undefined> = this.store.select(selectAuthError)
@@ -45,5 +45,9 @@ export class LoginPageComponent {
     this.store.dispatch(loginFormActions.clearForm())
     this.store.dispatch(loginFormActions.setType({ authType: type }))
     this.store.dispatch(authActions.clearError())
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(loginFormActions.clearForm())
   }
 }
