@@ -86,11 +86,11 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/favicon.png",
+              "src/shared/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/app/styles/index.scss"
             ],
             "scripts": []
           }

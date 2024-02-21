@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../widgets/navbar/navbar.component';
-import { HeroesListComponent } from '../widgets/heroes-list/ui/heroes-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from 'widgets/navbar';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     RouterOutlet,
     NavbarComponent,
-    HeroesListComponent,
     HttpClientModule
   ],
   templateUrl: './app.component.html'
