@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { HeroesListSchema } from "../types/heroes-list";
 import { heroesListActions } from "./heroes-list.actions";
 
-const initialState: HeroesListSchema = {
+export const initialState: HeroesListSchema = {
     page: 1,
     limit: 12,
     search: "",

@@ -21,15 +21,6 @@
     border: 1px solid var(--secondary-color);
 }
 
-.tableWrapper {
-    height: 450px;
-    width: 500px;
-    position: relative;
-    background-color: var(--paper-color);
-    padding: 20px;
-    filter: drop-shadow(3px 0 hsl(from var(--paper-color) h s 50%))
-}
-
 .sectionBtnWrapper {
     display: flex;
     position: absolute;
@@ -54,9 +45,17 @@
     background-color: var(--paper-color);
 }
 
+.tableWrapper {
+    height: 450px;
+    width: 500px;
+    position: relative;
+    background-color: var(--paper-color);
+    padding: 20px;
+    filter: drop-shadow(3px 0 hsl(from var(--paper-color) h s 50%))
+}
+
 .table {
     color: var(--secondary-color);
-    position: absolute;
 
     th {
         height: 30px;
@@ -76,9 +75,4 @@
             width: 300px;
         }
     }
-}
-
-.invisible {
-    opacity: 0;
-    height: 0;
 }

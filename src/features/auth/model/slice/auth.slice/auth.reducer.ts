@@ -3,7 +3,7 @@ import { authActions } from "./auth.actions";
 import { AuthSchema } from "../../types/auth";
 import { USERDATA_LOCALSTORAGE_KEY } from "shared/const/localStorage";
 
-const initialState: AuthSchema = {
+export const initialState: AuthSchema = {
     isLoading: false
 }
 
@@ -30,7 +30,7 @@ export const authReducer = createReducer(
             ...state,
             error: undefined,
             isLoading: false,
-            userData: action
+            userData: action.userData
         }
     }),
     on(authActions.logInError, (state, action) => ({

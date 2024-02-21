@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { searchActions } from "./search.actions";
 import { SearchSchema } from "../types/search";
 
-const initialState: SearchSchema = {
+export const initialState: SearchSchema = {
     query: ""
 }
 

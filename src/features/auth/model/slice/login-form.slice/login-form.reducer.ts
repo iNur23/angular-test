@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { loginFormActions } from "./login-form.actions";
 import { LoginFormSchema } from "../../types/login-form";
 
-const initialState: LoginFormSchema = {
+export const initialState: LoginFormSchema = {
     authType: "signIn",
     username: "",
     password: "",

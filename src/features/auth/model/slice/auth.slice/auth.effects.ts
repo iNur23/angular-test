@@ -24,7 +24,7 @@ const authByUsername = createEffect((
                 return authService.signIn(authData).pipe(
                     map(userData => {
                         router.navigate(['/heroes'])
-                        return authActions.logInSuccess(userData)
+                        return authActions.logInSuccess({ userData })
                     }),
                     catchError((error) => {
                         if (error?.status === 0) return of(authActions.logInError({ error: 'Server is not responding' }))
@@ -36,7 +36,7 @@ const authByUsername = createEffect((
             return authService.signUp(authData).pipe(
                 map(userData => {
                     router.navigate(['/heroes'])
-                    return authActions.logInSuccess(userData)
+                    return authActions.logInSuccess({ userData })
                 }),
                 catchError((error) => {
                     if (error?.status === 0) return of(authActions.logInError({ error: 'Server is not responding' }))

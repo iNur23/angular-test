@@ -19,11 +19,9 @@
         </div>
         <table
             class="table"
-            *ngFor="let item of ['powerstats','biography','appearance','work','connections']"
-            [ngClass]="{'invisible': (section | async) !== item}"
         >
-            <th><app-text variant="subtitle">{{item}}</app-text></th>
-            <tr *ngFor="let prop of $any(hero)[item] | keyvalue">
+            <th><app-text variant="subtitle">{{section | async}}</app-text></th>
+            <tr *ngFor="let prop of $any(hero)[(section | async)!] | keyvalue">
                 <td><app-text>{{prop.key}}</app-text></td>
                 <td><app-text variant="handwrite">{{prop.value}}</app-text></td>
             </tr>

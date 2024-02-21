@@ -8,7 +8,7 @@ const loadHero = createAction(
 
 const loadHeroSuccess = createAction(
   '[Hero] Load Hero Success',
-  props<Hero>()
+  props<{ hero: Hero }>()
 );
 
 const loadHeroError = createAction(

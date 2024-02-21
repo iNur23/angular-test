@@ -6,7 +6,7 @@ const init = createAction('[Auth] Init');
 const logIn = createAction('[Auth] Log In');
 const logInSuccess = createAction(
     '[Auth] Log In Success',
-    props<UserData>()
+    props<{ userData: UserData }>()
 );
 const logInError = createAction(
     '[Auth] Log In Error',
