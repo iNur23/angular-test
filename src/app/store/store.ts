@@ -1,27 +1,24 @@
 import { ActionReducerMap } from "@ngrx/store";
 import { heroEffects, HeroSchema, heroReducer } from "entities/hero";
 import { AuthSchema, LoginFormSchema, authEffects, authReducer, loginFormReducer } from "features/auth";
-import { SearchSchema, searchReducer } from "features/search-hero";
-import { HeroesListSchema, heroesListEffects, heroesListReducer } from "widgets/heroes-list";
+import { HeroesPageSchema, heroesEffects, heroesPageReducer } from "pages/heroes-page";
 
 export interface StateSchema {
     hero: HeroSchema;
-    heroesList: HeroesListSchema;
+    heroesPage: HeroesPageSchema
     loginForm: LoginFormSchema;
     auth: AuthSchema;
-    search: SearchSchema;
 }
 
 export const appReducers: ActionReducerMap<StateSchema> = {
     hero: heroReducer,
-    heroesList: heroesListReducer,
+    heroesPage: heroesPageReducer, 
     loginForm: loginFormReducer,
-    auth: authReducer,
-    search: searchReducer
+    auth: authReducer
 }
 
 export const appEffects = [
     heroEffects,
-    heroesListEffects,
+    heroesEffects,
     authEffects
 ]

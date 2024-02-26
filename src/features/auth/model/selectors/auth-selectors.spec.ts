@@ -18,9 +18,7 @@ describe('Auth userData selector', () => {
     const initialState: DeepPartial<StateSchema> = testState;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [
-            ],
+        TestBed.configureTestingModule({            
             providers: [
               provideMockStore({ initialState })
             ],
@@ -54,9 +52,7 @@ describe('Auth isAuthorized selector', () => {
     const initialState: DeepPartial<StateSchema> = testState;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [
-            ],
+        TestBed.configureTestingModule({            
             providers: [
               provideMockStore({ initialState })
             ],
@@ -90,9 +86,7 @@ describe('Auth isLoading selector', () => {
     const initialState: DeepPartial<StateSchema> = testState;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [
-            ],
+        TestBed.configureTestingModule({            
             providers: [
               provideMockStore({ initialState })
             ],
@@ -126,9 +120,7 @@ describe('Auth error selector', () => {
     const initialState: DeepPartial<StateSchema> = testState;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [
-            ],
+        TestBed.configureTestingModule({            
             providers: [
               provideMockStore({ initialState })
             ],

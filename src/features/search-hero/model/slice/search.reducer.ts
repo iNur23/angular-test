@@ -8,9 +8,8 @@ export const initialState: SearchSchema = {
 
 export const searchReducer = createReducer(
     initialState,
-    on(searchActions.setSearch, (state, action) => ({
+    on(searchActions.setQuery, (state, action) => ({
         ...state,
         query: action.query
-    })),
-    on(searchActions.clear, () => initialState)
+    }))
 )

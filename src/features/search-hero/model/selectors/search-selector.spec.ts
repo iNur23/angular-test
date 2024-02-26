@@ -5,7 +5,7 @@ import { cold } from 'jasmine-marbles'
 import { selectSearchQuery } from './search.selector';
 
 const testState: DeepPartial<StateSchema> = {
-    search: { query: 'Test query' }
+    heroesPage: { search: { query: 'Test query' } }
 }
 
 describe('Search query selector', () => {
@@ -14,8 +14,6 @@ describe('Search query selector', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [
-            ],
             providers: [
               provideMockStore({ initialState })
             ],
@@ -30,7 +28,7 @@ describe('Search query selector', () => {
     });
 
     it('should return empty string', () => {
-        store.setState({ search: {} })
+        store.setState({ heroesPage: { search: {} } })
 
         const expected = cold('a', { a: '' })
         expect(store.select(selectSearchQuery)).toBeObservable(expected)

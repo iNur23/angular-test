@@ -19,3 +19,14 @@
     width: 100%;
     background-color: var(--red-color);
 }
+
+.heroCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.notFound {
+    margin-right: auto;
+}

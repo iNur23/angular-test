@@ -33,7 +33,7 @@ describe('Auth reducer', () => {
     })
 
     describe('log in action', () => {
-        it('should return loaging state', () => {
+        it('should return loading state', () => {
             const action = authActions.logIn
             const state = authReducer(initialState, action)
             

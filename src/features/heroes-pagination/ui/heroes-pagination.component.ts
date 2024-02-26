@@ -1,15 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
 import { Observable } from 'rxjs';
 import { ButtonComponent } from 'shared/ui/button/button.component';
-import {
-  heroesListActions,
-  selectHeroesListHasMore,
-  selectHeroesListLimit,
-  selectHeroesListPage
-} from 'widgets/heroes-list';
+import { selectHeroesPaginationLimit, selectHeroesPaginationPage } from '../model/selectors/pagination.selectors';
+import { paginationActions } from '../model/slice/pagination.actions';
 
 @Component({
   selector: 'app-heroes-pagination',
@@ -22,22 +18,24 @@ import {
   styleUrl: './heroes-pagination.component.scss'
 })
 export class HeroesPaginationComponent {
+  @Output() onChangePagination: EventEmitter<any> = new EventEmitter()
+  @Input() hasMore: Observable<boolean>
+
   constructor(private store: Store<StateSchema>) {}
 
-  page: Observable<number> = this.store.select(selectHeroesListPage)
-  limit: Observable<number> = this.store.select(selectHeroesListLimit)
-  hasMore: Observable<boolean> = this.store.select(selectHeroesListHasMore)
+  page: Observable<number> = this.store.select(selectHeroesPaginationPage)
+  limit: Observable<number> = this.store.select(selectHeroesPaginationLimit)
 
   setPage = (page: number) => {
-    this.store.dispatch(heroesListActions.setPage({ page }))
-    this.store.dispatch(heroesListActions.loadHeroesList())
+    this.store.dispatch(paginationActions.setPage({ page }))
+    this.onChangePagination.emit()
   }
   setPreviousPage = () => {
-    this.store.dispatch(heroesListActions.setPreviousPage())
-    this.store.dispatch(heroesListActions.loadHeroesList())
+    this.store.dispatch(paginationActions.setPreviousPage())
+    this.onChangePagination.emit()
   }
   setNextPage = () => {
-    this.store.dispatch(heroesListActions.setNextPage())
-    this.store.dispatch(heroesListActions.loadHeroesList())
+    this.store.dispatch(paginationActions.setNextPage())
+    this.onChangePagination.emit()
   }
 }

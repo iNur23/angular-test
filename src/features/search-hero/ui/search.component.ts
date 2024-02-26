@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { StateSchema } from 'app/store/store';
-import { heroesListActions } from 'widgets/heroes-list';
 import { searchActions } from '../model/slice/search.actions';
-import { selectSearchQuery } from '../model/selectors/search.selector';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { SvgComponent } from 'shared/ui/svg/svg.component';
 import { InputComponent } from 'shared/ui/input/input.component';
 
@@ -24,21 +26,17 @@ import { InputComponent } from 'shared/ui/input/input.component';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-  query: string
+  @Output() onSearchSubmit: EventEmitter<any> = new EventEmitter()
+  queryControl = new FormControl('', { nonNullable: true })
+  form = new FormGroup({
+    query: this.queryControl
+  })
 
-  constructor(private store: Store<StateSchema>, private router: Router) {
-    this.store.select(selectSearchQuery).subscribe(query => this.query = query)
-  }
-
-  onChangeSearch(e: EventTarget | null) {
-    const query = (e as HTMLInputElement).value
-    this.store.dispatch(searchActions.setSearch({ query }))
-  }
+  constructor(private store: Store<StateSchema>) {}
 
   onSubmit() {
-    this.store.dispatch(heroesListActions.setSearch({ search: this.query }))
-    this.store.dispatch(searchActions.clear())
-    this.router.navigate(['/heroes'])
-    this.store.dispatch(heroesListActions.loadHeroesList())
+    this.store.dispatch(searchActions.setQuery({ query: this.queryControl.value }))
+    this.queryControl.reset()
+    this.onSearchSubmit.emit()
   }
 }

@@ -1,5 +1,8 @@
 <header class="navbar">
-  <app-search *ngIf="isAuthorized | async"></app-search>
+  <app-search
+    *ngIf="isAuthorized | async"
+    (onSearchSubmit)="onSearchSubmit()"
+  ></app-search>
   <div class="authWrapper">
     <div class="profile">
       <img

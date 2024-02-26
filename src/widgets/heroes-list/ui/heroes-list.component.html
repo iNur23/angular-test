@@ -1,9 +1,0 @@
-<div class="heroCards" *ngIf="heroes.length">
-    <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
-</div>
-<app-text
-    class="heroCards" *ngIf="!heroes.length"
-    variant="subtitle"
-    alignment="left"
-    class="notFound"
->No heroes found</app-text>

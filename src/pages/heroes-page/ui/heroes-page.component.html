@@ -4,14 +4,29 @@
         variant="negative"
     >{{error | async}}</app-status-message>
     <div *ngIf="!(isLoading | async) && !(error | async)">
+
         <div class="header">
             <app-text
                 variant="title"
                 *ngIf="!!(search | async)"
             >Search result: {{(search | async)}}</app-text>
-            <app-heroes-pagination class="pagination"></app-heroes-pagination>
+            <app-heroes-pagination
+                class="pagination"
+                [hasMore]="hasMore"
+                (onChangePagination)="onChangePagination()"
+            ></app-heroes-pagination>
         </div>
-        <app-heroes-list *ngIf="(heroes | async)" [heroes]="(heroes | async)!"></app-heroes-list>
+
+        <div class="heroCards" *ngIf="(heroes | async)?.length">
+            <app-hero-card *ngFor="let hero of (heroes | async)" [hero]="hero"></app-hero-card>
+        </div>
+        <app-text
+            class="heroCards" *ngIf="!(heroes | async)?.length"
+            variant="subtitle"
+            alignment="left"
+            class="notFound"
+        >No heroes found</app-text>
+        
     </div>
     <app-loader *ngIf="isLoading | async"></app-loader>
 </div>

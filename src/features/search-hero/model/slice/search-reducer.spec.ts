@@ -19,21 +19,12 @@ describe('Search reducer', () => {
         })
     })
 
-    describe('set search action', () => {
+    describe('set query action', () => {
         it('should return state with new query', () => {
-            const action = searchActions.setSearch({ query: 'Other query' })
+            const action = searchActions.setQuery({ query: 'Other query' })
             const state = searchReducer(initialState, action)
             
             expect(state).toEqual({ ...initialState, query: 'Other query' })
-        })
-    })
-
-    describe('clear search action', () => {
-        it('should return default state', () => {
-            const action = searchActions.clear
-            const state = searchReducer(testState, action)
-            
-            expect(state).toEqual(initialState)
         })
     })
 })

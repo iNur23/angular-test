@@ -1,10 +1,9 @@
-<form class="search">
+<form class="search" [formGroup]="form" >
     <app-input
         type="text"
-        (input)="onChangeSearch($event.target)"
         (keydown.enter)="onSubmit()"
-        [value]="query"
         placeholder="Search hero"
+        [formControl]="queryControl"
     ></app-input>
     <button class="btn" type="button" (click)="onSubmit()">
         <app-svg class="searchSvg" [path]="'shared/assets/icons/search-20-20.svg'"></app-svg>

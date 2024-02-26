@@ -9,7 +9,7 @@ export const initialState: AuthSchema = {
 
 export const authReducer = createReducer(
     initialState,
-    on(authActions.init, (state, action) => {
+    on(authActions.init, (state) => {
         const fromLocalStorage = localStorage.getItem(USERDATA_LOCALSTORAGE_KEY)
         if (!fromLocalStorage) return initialState
 
@@ -25,7 +25,7 @@ export const authReducer = createReducer(
         error: undefined
     })),
     on(authActions.logInSuccess, (state, action) => {
-        localStorage.setItem(USERDATA_LOCALSTORAGE_KEY, JSON.stringify(action))
+        localStorage.setItem(USERDATA_LOCALSTORAGE_KEY, JSON.stringify(action.userData))
         return {
             ...state,
             error: undefined,

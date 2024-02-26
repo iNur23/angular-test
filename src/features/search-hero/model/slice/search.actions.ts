@@ -1,12 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-const setSearch = createAction(
-    '[Search] Set Search',
+const setQuery = createAction(
+    '[Search] Set Query',
     props<{ query: string; }>()
 );
 
-const clear = createAction(
-    '[Search] Clear'
-);
-
-export const searchActions = { setSearch, clear }
+export const searchActions = { setQuery }
